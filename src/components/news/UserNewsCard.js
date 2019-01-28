@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
 
-
-export default class NewsCard extends Component {
-
+export default class UserNewsCard extends Component {
   render() {
     return(
       <>
