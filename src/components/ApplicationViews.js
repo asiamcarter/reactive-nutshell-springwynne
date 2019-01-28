@@ -1,8 +1,12 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
+import NewsList from './news/NewsList'
 
 export default class ApplicationViews extends Component {
+  state = {
+    newsitems: []
+  }
 
   getTaskById = () => {
     DataManager.get(1, "tasks").then(allTasks => console.log(allTasks))
@@ -14,7 +18,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return null
+            return <NewsList newsitems={this.state.newsitems} getTask={this.getTaskById} />
             // Remove null and return the component which will show news articles
           }}
         />
