@@ -19,7 +19,7 @@ export default class ApplicationViews extends Component {
 
   componentDidMount () {
 
-      DataManager.getAll("newsItems")
+      DataManager.getAll("events")
         .then(events => {this.setState({events: events})})
         .then(() => DataManager.getAll("tasks"))
         .then(tasks => {this.setState({tasks: tasks})})
@@ -35,7 +35,8 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return <NewsList news={this.state.news} />
+            return <NewsList {...props}
+            news={this.state.news} />
             // Remove null and return the component which will show news articles
           }}
         />
