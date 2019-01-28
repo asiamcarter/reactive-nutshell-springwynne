@@ -3,18 +3,31 @@ import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 import TaskList from "./TaskList"
 
+
 export default class ApplicationViews extends Component {
 
-  state = {
-    tasks: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+
+      events: [],
+      tasks: [],
+      news: [],
+      messages: []
+
+    }
   }
 
-  componentDidMount() {
-    DataManager.getAll("tasks").then(allTasks => {
-      this.setState({
-        tasks: allTasks
-      });
-    });
+  componentDidMount () {
+
+      DataManager.getAll("events")
+        .then(events => {this.setState({events: events})})
+        .then(() => DataManager.getAll("tasks"))
+        .then(tasks => {this.setState({tasks: tasks})})
+        .then(() => DataManager.getAll("newsItems"))
+        .then(news => {this.setState({news: news})})
+        .then(() => DataManager.getAll("messages"))
+        .then(messages => {this.setState({messages: messages})})
   }
 
   render() {
