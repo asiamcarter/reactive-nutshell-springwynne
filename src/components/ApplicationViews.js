@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 import TaskList from "./tasks/TaskList"
@@ -10,12 +10,10 @@ export default class ApplicationViews extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
       events: [],
       tasks: [],
       news: [],
       messages: []
-
     }
   }
 
@@ -30,6 +28,13 @@ export default class ApplicationViews extends Component {
         .then(() => DataManager.getAll("messages"))
         .then(messages => {this.setState({messages: messages})})
   }
+
+  addTask = task =>
+    DataManager.post("tasks", task)
+    .then(() => DataManager.getAll("tasks"))
+    .then(allTasks => this.setState({
+      tasks: allTasks
+    }))
 
   render() {
     return (
@@ -56,7 +61,8 @@ export default class ApplicationViews extends Component {
             <Route
                exact path="/tasks/new" render={props => {
                 return <NewTaskForm {...props}
-                tasks={this.state.tasks} />
+                tasks={this.state.tasks}
+                addTask={this.addTask} />
               }}
               />
         <Route
