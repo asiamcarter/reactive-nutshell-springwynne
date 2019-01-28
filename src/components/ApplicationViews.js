@@ -1,11 +1,20 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
+import TaskList from "./TaskList"
 
 export default class ApplicationViews extends Component {
 
-  getTaskById = () => {
-    DataManager.get(1, "tasks").then(allTasks => console.log(allTasks))
+  state = {
+    tasks: ""
+  }
+
+  componentDidMount() {
+    DataManager.getAll("tasks").then(allTasks => {
+      this.setState({
+        tasks: allTasks
+      });
+    });
   }
 
   render() {
@@ -26,8 +35,8 @@ export default class ApplicationViews extends Component {
         />
             <Route
               path="/tasks" render={props => {
-                return null
-                // Remove null and return the component which will show the user's tasks
+                return <TaskList {...props}
+                tasks={this.state.tasks} />
               }}
             />
         <Route
