@@ -1,8 +1,13 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import DataManager from "../modules/DataManager"
 
 
 export default class ApplicationViews extends Component {
+
+  getTaskById = () => {
+    DataManager.get(1, "tasks").then(allTasks => console.log(allTasks))
+  }
 
   render() {
     return (
