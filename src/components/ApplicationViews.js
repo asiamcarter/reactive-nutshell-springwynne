@@ -1,7 +1,8 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
-import TaskList from "./TaskList"
+import TaskList from "./tasks/TaskList"
+import NewTaskForm from "./tasks/NewTaskForm"
 
 
 export default class ApplicationViews extends Component {
@@ -47,11 +48,17 @@ export default class ApplicationViews extends Component {
           }}
         />
             <Route
-              path="/tasks" render={props => {
+              exact path="/tasks" render={props => {
                 return <TaskList {...props}
                 tasks={this.state.tasks} />
               }}
             />
+            <Route
+               exact path="/tasks/new" render={props => {
+                return <NewTaskForm {...props}
+                tasks={this.state.tasks} />
+              }}
+              />
         <Route
           path="/messages" render={props => {
             return null
