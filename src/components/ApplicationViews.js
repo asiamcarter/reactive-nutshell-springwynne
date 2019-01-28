@@ -13,28 +13,30 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show news articles
           }}
         />
-
         <Route
-          path="/friends" render={props => {
+          path="/events" render={props => {
             return null
             // Remove null and return the component which will show list of friends
           }}
         />
-
+            <Route
+              path="/tasks" render={props => {
+                return null
+                // Remove null and return the component which will show the user's tasks
+              }}
+            />
         <Route
           path="/messages" render={props => {
             return null
             // Remove null and return the component which will show the messages
           }}
         />
-
         <Route
-          path="/tasks" render={props => {
+          path="/friends" render={props => {
             return null
-            // Remove null and return the component which will show the user's tasks
+            // Remove null and return the component which will show list of friends
           }}
         />
-        
       </React.Fragment>
     );
   }
