@@ -2,24 +2,19 @@ import React, { Component } from  'react';
 
 export default class Event extends Component {
 
-    constructor(props) {
-
-        super(props)
-
-        this.state = {
-
-            events: []
-        }
-    }
-
     render() {
 
         return (
 
             <React.Fragment>
-
-
-
+                {
+                    <div key={this.props.data.id} className="event">
+                        {`Event: `} {this.props.data.eventName} <br />
+                        {`Date:`} {this.props.data.eventDate}<br />
+                        {`Time: `} {this.props.data.eventTime}<br />
+                        {`Location: `} {this.props.data.eventLocation}<br />
+                    </div>
+                }
             </React.Fragment>
         )
     }

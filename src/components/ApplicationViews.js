@@ -1,12 +1,36 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
+import EventList from "./events/EventList";
 
 
 export default class ApplicationViews extends Component {
 
-  getTaskById = () => {
-    DataManager.get(1, "tasks").then(allTasks => console.log(allTasks))
+  constructor(props) {
+    super(props)
+    this.state = {
+
+      events: [],
+      tasks: [],
+      news: [],
+      messages: [],
+      users: []
+
+    }
+  }
+
+  componentDidMount () {
+
+      DataManager.getAll("events")
+        .then(events => {this.setState({events: events})})
+        .then(() => DataManager.getAll("users"))
+        .then(users => {this.setState({users: users})})
+        .then(() => DataManager.getAll("tasks"))
+        .then(tasks => {this.setState({tasks: tasks})})
+        .then(() => DataManager.getAll("newsItems"))
+        .then(news => {this.setState({news: news})})
+        .then(() => DataManager.getAll("messages"))
+        .then(messages => {this.setState({messages: messages})})
   }
 
   render() {
@@ -21,7 +45,7 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/events" render={props => {
-            return null
+            return <EventList data={this.state}/>
             // Remove null and return the component which will show list of friends
           }}
         />
