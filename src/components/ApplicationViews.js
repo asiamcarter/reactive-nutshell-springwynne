@@ -5,10 +5,6 @@ import NewsList from './news/NewsList'
 
 
 export default class ApplicationViews extends Component {
-  state = {
-    newsitems: []
-  }
-
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +19,7 @@ export default class ApplicationViews extends Component {
 
   componentDidMount () {
 
-      DataManager.getAll("events")
+      DataManager.getAll("newsItems")
         .then(events => {this.setState({events: events})})
         .then(() => DataManager.getAll("tasks"))
         .then(tasks => {this.setState({tasks: tasks})})
@@ -39,7 +35,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return <NewsList newsitems={this.state.newsitems} getTask={this.getTaskById} />
+            return <NewsList news={this.state.news} />
             // Remove null and return the component which will show news articles
           }}
         />
