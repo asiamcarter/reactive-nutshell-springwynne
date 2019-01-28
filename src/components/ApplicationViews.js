@@ -2,10 +2,31 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 
+
 export default class ApplicationViews extends Component {
 
-  getTaskById = () => {
-    DataManager.get(1, "tasks").then(allTasks => console.log(allTasks))
+  constructor(props) {
+    super(props)
+    this.state = {
+
+      events: [],
+      tasks: [],
+      news: [],
+      messages: []
+
+    }
+  }
+
+  componentDidMount () {
+
+      DataManager.getAll("events")
+        .then(events => {this.setState({events: events})})
+        .then(() => DataManager.getAll("tasks"))
+        .then(tasks => {this.setState({tasks: tasks})})
+        .then(() => DataManager.getAll("newsItems"))
+        .then(news => {this.setState({news: news})})
+        .then(() => DataManager.getAll("messages"))
+        .then(messages => {this.setState({messages: messages})})
   }
 
   render() {
