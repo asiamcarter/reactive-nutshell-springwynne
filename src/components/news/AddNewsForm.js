@@ -21,7 +21,7 @@ export default class AddNewsForm extends Component {
     evt.preventDefault()
         const article = {
             userId: this.state.userId,
-            url: this.state.url,
+            url: `http://${this.state.url}`,
             title: this.state.title,
             synopsis: this.state.synopsis,
             timeStamp: new Date()
