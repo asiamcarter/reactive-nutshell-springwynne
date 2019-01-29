@@ -6,31 +6,54 @@ import EventList from "./events/EventList";
 
 export default class ApplicationViews extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-
-      events: [],
-      tasks: [],
-      news: [],
-      messages: [],
-      users: []
-
+        events: [],
+        tasks: [],
+        news: [],
+        messages: [],
+        users: []
     }
+    this.userLogin = this.userLogin.bind(this)
   }
 
+  userLogin() {
+
+    sessionStorage.setItem("userId", 1)
+  }
   componentDidMount () {
 
-      DataManager.getAll("events")
-        .then(events => {this.setState({events: events})})
-        .then(() => DataManager.getAll("users"))
-        .then(users => {this.setState({users: users})})
-        .then(() => DataManager.getAll("tasks"))
-        .then(tasks => {this.setState({tasks: tasks})})
-        .then(() => DataManager.getAll("newsItems"))
-        .then(news => {this.setState({news: news})})
-        .then(() => DataManager.getAll("messages"))
-        .then(messages => {this.setState({messages: messages})})
+    let currentUser = 1;
+    DataManager.connectToData({dataSet: 'events', fetchType: 'GET', embedItem: ""})
+      .then(events => {
+        let filteredEvents = [];
+        events.forEach(event => {
+            let eventObject = {
+                id: event.id,
+                userId: event.userId,
+                eventName: event.eventName,
+                eventDate: event.eventDate,
+                eventTime: event.eventTime,
+                eventLocation: event.eventLocation,
+                eventDateTimeString: `${event.eventDate}T${event.eventTime}`
+            }
+            filteredEvents.push(eventObject)
+        });
+        let sortedEvents = filteredEvents.sort(function(a,b){
+              return new Date(a.eventDateTimeString) - new Date(b.eventDateTimeString);
+          })
+        this.setState({events: sortedEvents})})
+
+      .then(() => DataManager.connectToData({dataSet: 'tasks', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(tasks => {this.setState({tasks: tasks})})
+      .then(() => DataManager.connectToData({dataSet: 'newsItems', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(news => {this.setState({news: news})})
+      .then(() => DataManager.connectToData({dataSet: 'messages', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(messages => {this.setState({messages: messages})})
+      .then(() => DataManager.connectToData({dataSet: 'users', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(users => {this.setState({users: users})})
+
   }
 
   render() {
@@ -45,7 +68,7 @@ export default class ApplicationViews extends Component {
         />
         <Route
           path="/events" render={props => {
-            return <EventList data={this.state}/>
+            return <EventList {...props} events={this.state.events} />
             // Remove null and return the component which will show list of friends
           }}
         />
