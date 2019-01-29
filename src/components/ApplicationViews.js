@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 import NewsList from './news/NewsList'
 import AddNewsForm from './news/AddNewsForm'
+import MessagesList from './messages/MessagesList'
 
 
 export default class ApplicationViews extends Component {
@@ -79,8 +80,7 @@ export default class ApplicationViews extends Component {
             />
         <Route
           path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+            return <MessagesList />
           }}
         />
         <Route
