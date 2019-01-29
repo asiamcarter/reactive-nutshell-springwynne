@@ -18,7 +18,6 @@ export default class ApplicationViews extends Component {
       news: [],
       messages: [],
       friends: []
-
     }
   }
 
