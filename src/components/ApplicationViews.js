@@ -102,7 +102,10 @@ export default class ApplicationViews extends Component {
               />
         <Route
           path="/messages" render={props => {
-            return <MessagesList />
+            return <MessagesList {...props}
+            messages={this.state.messages}
+            users={this.state.users}
+            embedded={DataManager.getAll("users", "messages")} />
           }}
         />
         <Route
