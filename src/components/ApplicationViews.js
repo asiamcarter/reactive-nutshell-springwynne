@@ -34,7 +34,7 @@ export default class ApplicationViews extends Component {
   }
 
   addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
-    .then(() => DataManager.getAll())
+    .then(() => DataManager.getAll("newsItems"))
     .then(news => this.setState({
         news: news
     })
