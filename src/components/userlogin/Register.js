@@ -23,12 +23,28 @@ export default class Register extends Component {
             password: this.state.password
         }
         this.props.addUser(user)
-        this.props.registerHere(this.state.userName, this.state.password)
-        .then(allUsers => {
-            console.log(allUsers)
-        })
-        this.props.history.push("/login")
+        .then(()=> {
+            console.log("user:", user)
+            this.props.registerHere(user.userName, user.password)
+            .then(allUsers => {
+                // console.log(allUsers)
+                    allUsers.forEach(users=> {
+                        let loggedIn= false;
+                        sessionStorage.setItem("User", users.id);
+                        let sessionUser = sessionStorage.getItem("User")
+                        console.log(user, sessionUser)
+                        if (user.userName === users.userName && user.password === users.password) {
+                            loggedIn= true;
+                        }
+                        if (loggedIn=== true){
+                            this.props.history.push("/")
+                        }
+                    })
+                })
+            })
+
         }
+
 
 
 
@@ -52,7 +68,7 @@ export default class Register extends Component {
                         <label htmlFor="Password">Password:</label>
                             <input type="text" required onChange={this.handleFieldChange} id="password"/>
                     </div>
-                    <button type="submit" onClick={this.buildNewUser}> Join Now </button>
+                    <button type="submit" onClick={this.buildNewUser}> Register a new account. </button>
                 </form>
             </React.Fragment>
         )

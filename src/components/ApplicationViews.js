@@ -165,7 +165,8 @@ export default class ApplicationViews extends Component {
         />
         <Route
         path="/login" render={props => {
-          return <Login {...props} />
+          return <Login {...props}
+          registerHere={this.registerHere} />
         }}
         />
       </React.Fragment>
