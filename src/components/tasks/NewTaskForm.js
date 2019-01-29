@@ -22,7 +22,7 @@ export default class NewTaskForm extends Component {
             userId: "",
             task: this.state.task,
             expectedCompletionDate: this.state.expectedCompletionDate,
-            checked: ""
+            checked: false
         }
         this.props.addTask(task)
         .then(()=> this.props.history.push("/tasks"))

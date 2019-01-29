@@ -43,6 +43,13 @@ export default class ApplicationViews extends Component {
       tasks: allTasks
     }))
 
+    deleteTask = (id) =>
+    DataManager.delete(id, "tasks")
+    .then(()=> DataManager.getAll("tasks", ""))
+    .then(allTasks => this.setState ({
+      tasks: allTasks
+    }))
+
   render() {
     return (
       <React.Fragment>
@@ -63,7 +70,8 @@ export default class ApplicationViews extends Component {
               exact path="/tasks" render={props => {
                 return <TaskList {...props}
                 tasks={this.state.tasks}
-                putTask={this.putTask} />
+                putTask={this.putTask}
+                deleteTask={this.deleteTask} />
               }}
             />
             <Route
