@@ -26,37 +26,37 @@ export default class AddNewsForm extends Component {
         }
 
         // Create the article and redirect user to article list
-        this.props.addarticle(article).then(() => this.props.history.push("/"))
+        this.props.addNewsArticle("newsItems", article).then(() => this.props.history.push("/"))
 
   }
 
   render() {
     return(
       <React.Fragment>
-                <form className="animalForm">
+                <form className="newNewsForm">
                     <div className="form-group">
-                        <label htmlFor="animalName">Animal name</label>
+                        <label htmlFor="newsTitle">News Title</label>
                         <input type="text" required
                             className="form-control"
                             onChange={this.handleFieldChange}
-                            id="animalName"
-                            placeholder="Animal name" />
+                            id="title"
+                            placeholder="Add News Title" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="breed">Breed</label>
+                        <label htmlFor="newsURL">Add News URL</label>
                         <input type="text" required
                             className="form-control"
                             onChange={this.handleFieldChange}
-                            id="breed" placeholder="Breed" />
+                            id="url" placeholder="Add News URL" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="employee">Assign to caretaker</label>
-                        <select defaultValue="" name="employee" id="employee"
-                                onChange={this.handleFieldChange}>
-                            <option value="">Select an employee</option>
-                        </select>
+                        <label htmlFor="synopsis">Add Brief Synopsis</label>
+                        <input type="text" required
+                            className="form-control"
+                            onChange={this.handleFieldChange}
+                            id="synopsis" placeholder="Add Brief Synopsis" />
                     </div>
-
+                    <button type="submit" onClick={this.addNewArticle} className="btn btn-primary">Submit</button>
                 </form>
             </React.Fragment>
     )

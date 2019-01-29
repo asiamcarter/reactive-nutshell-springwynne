@@ -33,6 +33,13 @@ export default class ApplicationViews extends Component {
         .then(friends => {this.setState({friends: friends})})
   }
 
+  addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
+    .then(() => DataManager.getAll())
+    .then(news => this.setState({
+        news: news
+    })
+    )
+
   render() {
     return (
       <React.Fragment>
@@ -46,7 +53,8 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route path="/addnews" render={(props) => {
-                    return <AddNewsForm {...props}/>
+                    return <AddNewsForm {...props}
+                    addNewsArticle={this.addNewsArticle} />
                 }} />
         <Route
           path="/events" render={props => {
