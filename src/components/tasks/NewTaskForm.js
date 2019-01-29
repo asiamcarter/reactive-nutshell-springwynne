@@ -16,9 +16,10 @@ export default class NewTaskForm extends Component {
     };
 
     buildNewTask = evt => {
+        let sessionId = sessionStorage.getItem("User")
         evt.preventDefault();
         const task = {
-            userId: "",
+            userId: Number(sessionId),
             task: this.state.task,
             expectedCompletionDate: this.state.expectedCompletionDate,
             checked: false

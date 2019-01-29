@@ -25,12 +25,14 @@ export default class Login extends Component {
                 } else {
                     allUsers.forEach(user=> {
                         let loggedIn= false;
-                        sessionStorage.setItem("User", user.id);
-                        let sessionUser = sessionStorage.getItem("User")
+
                         if (this.state.userName === user.userName && this.state.password === user.password) {
                             loggedIn= true;
                         }
                         if (loggedIn=== true){
+                            sessionStorage.setItem("User", user.id);
+                            let sessionUser = sessionStorage.getItem("User")
+                            console.log(sessionUser)
                             this.props.history.push("/")
                         } else {
                             console.log("We don't seem to recognize you. Try registering!")
