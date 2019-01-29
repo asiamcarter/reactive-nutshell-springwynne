@@ -1,20 +1,24 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
+import NewsList from './news/NewsList'
+import AddNewsForm from './news/AddNewsForm'
+import MessagesList from './messages/MessagesList'
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
 import EditForm from "./tasks/EditForm"
 
 
 export default class ApplicationViews extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       events: [],
       tasks: [],
       news: [],
-      messages: []
+      messages: [],
+      friends: []
+
     }
   }
 
@@ -28,6 +32,8 @@ export default class ApplicationViews extends Component {
         .then(news => {this.setState({news: news})})
         .then(() => DataManager.getAll("messages"))
         .then(messages => {this.setState({messages: messages})})
+        .then(() => DataManager.getAll("friends"))
+        .then(friends => {this.setState({friends: friends})})
   }
 
   addTask = task =>
@@ -64,6 +70,20 @@ export default class ApplicationViews extends Component {
           })
         );
     };
+  addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
+    .then(() => DataManager.getAll("newsItems"))
+    .then(news => this.setState({
+        news: news
+    })
+    )
+
+  deleteNewsArticle = (id, dataset) =>  DataManager.delete(id, dataset)
+    .then(() => DataManager.getAll("newsItems"))
+    .then(news => this.setState({
+        news: news
+    })
+    )
+
 
   render() {
     return (
@@ -71,10 +91,17 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return null
+            return <NewsList {...props}
+            news={this.state.news}
+            friends={this.state.friends}
+            deleteNewsArticle={this.deleteNewsArticle} />
             // Remove null and return the component which will show news articles
           }}
         />
+        <Route path="/addnews" render={(props) => {
+                    return <AddNewsForm {...props}
+                    addNewsArticle={this.addNewsArticle} />
+                }} />
         <Route
           path="/events" render={props => {
             return null
@@ -98,8 +125,7 @@ export default class ApplicationViews extends Component {
               />
         <Route
           path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+            return <MessagesList />
           }}
         />
         <Route
