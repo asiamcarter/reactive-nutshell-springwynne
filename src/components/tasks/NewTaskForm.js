@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import TaskCard from "./TaskCard"
 
 export default class NewTaskForm extends Component {
 
@@ -6,7 +7,7 @@ export default class NewTaskForm extends Component {
         userId: "",
         task: "",
         expectedCompletionDate: "",
-        complete: ""
+        checked: ""
     }
 
     handleFieldChange = evt => {
@@ -21,7 +22,7 @@ export default class NewTaskForm extends Component {
             userId: "",
             task: this.state.task,
             expectedCompletionDate: this.state.expectedCompletionDate,
-            complete: ""
+            checked: ""
         }
         this.props.addTask(task)
         .then(()=> this.props.history.push("/tasks"))

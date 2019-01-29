@@ -21,7 +21,7 @@ export default {
 
     put(id, dataset, newObject) {
         return fetch (`${remoteURL}/${dataset}/${id}`, {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },

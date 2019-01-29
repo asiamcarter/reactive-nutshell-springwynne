@@ -7,22 +7,35 @@ export default class TaskCard extends Component {
         checked: false
     }
 
-    handleChange = () => this.setState({
+
+
+    handleChange = () => {this.setState({
         checked: !this.state.checked
     })
+    this.putChecked();}
+
+    putChecked = () => {
+        const task = {
+            userId: "",
+            task: this.props.task.task,
+            expectedCompletionDate: this.props.task.expectedCompletionDate,
+            checked: !this.state.checked
+        }
+        {console.log(task)}
+        this.props.putTask(this.props.task.id,task)
+        .then(()=> this.props.history.push("/tasks"))
+    }
 
     render() {
-        const hidden = !this.state.checked ? '' : 'hidden';
         return (
-            <div key={this.props.task.id} className= { hidden }>
+            <div>
+            <div key={this.props.task.id}>
                 <h4>{this.props.task.task}</h4>
-                <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
-                <div>
+                <p>Completion Date: {this.props.task.expectedCompletionDate}</p></div>
                     Complete <input type="checkbox" checked={this.state.checked} onChange={this.handleChange} id="checkbox"/>
-
-                </div>
-                <p>{this.props.task.complete}</p>
             </div>
+
         )
+
     }
 }
