@@ -5,11 +5,11 @@ import { Link } from "react-router-dom"
 export default class TaskCard extends Component {
 
     state = {
-        completed: ""
+        checked: ""
     }
     handleChange = () => {
         this.setState({
-        completed: !this.state.completed
+        checked: !this.state.completed
     })
     let sessionId = sessionStorage.getItem("User")
     console.log(this.props.task.userId, sessionId)
@@ -32,11 +32,11 @@ export default class TaskCard extends Component {
     //     this.props.deleteTask(this.props.task.id, "tasks")
     //     }
 
-    hideChecked = () =>
-    {
-        let sessionId = sessionStorage.getItem("User")
-        console.log("USERID:",this.props.task.userId, "SESSION:", sessionId)
-        if (this.props.task.userId === Number(sessionId)) {
+    hideChecked = () => {
+
+    let sessionId = sessionStorage.getItem("User")
+    if (!this.state.checked && this.props.task.userId === Number(sessionId))
+          {
             return (
                 <div>
                     <h4>{this.props.task.task}</h4>
@@ -47,16 +47,6 @@ export default class TaskCard extends Component {
                     )
 
         }
-        // if (!this.state.checked) {
-        //     return (
-        //         <div>
-        //             <h4>{this.props.task.task}</h4>
-        //             <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
-        //             <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
-        //             <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
-        //             </div>
-        //     )
-        // }
      }
 
     //  displayTasks = () => {
