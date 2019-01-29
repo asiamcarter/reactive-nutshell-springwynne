@@ -20,18 +20,27 @@ export default class Login extends Component {
     this.props.registerHere(this.state.userName, this.state.password)
             .then(allUsers => {
                 // console.log(allUsers)
-                    allUsers.forEach(users=> {
+                if( allUsers.length < 1) {
+                    alert("We can't seem to find you! Try registering below")
+                } else {
+                    allUsers.forEach(user=> {
                         let loggedIn= false;
-                        sessionStorage.setItem("User", users.id);
+                        sessionStorage.setItem("User", user.id);
                         let sessionUser = sessionStorage.getItem("User")
-                        if (this.state.userName === users.userName && this.state.password === users.password) {
+                        if (this.state.userName === user.userName && this.state.password === user.password) {
                             loggedIn= true;
                         }
                         if (loggedIn=== true){
                             this.props.history.push("/")
+                        } else {
+                            console.log("We don't seem to recognize you. Try registering!")
                         }
+
+
                     })
+                }
                 })
+
             }
 
     render() {
