@@ -7,12 +7,16 @@ export default class NewsList extends Component {
   render() {
     const userId = 1
     const userSaved = this.props.news.filter(newsArticles => newsArticles.userId === userId)
-    console.log(this.props)
+    const timeSorted = userSaved.sort(function(a,b){
+      return new Date(b.timeStamp) - new Date(a.timeStamp);
+
+
+  });
     return(
       <>
-        <section>
-        <h1 className="newsHeader">Your Saved News</h1>
-            {userSaved.map(userArticle =>(
+        <section id="userNewsSection">
+        <h1 id="usersNews" className="newsHeader">Your Saved News:</h1>
+            {timeSorted.map(userArticle =>(
               <UserNewsCard newsArticle={userArticle} deleteNewsArticle={this.props.deleteNewsArticle} />
             ))}
         </section>

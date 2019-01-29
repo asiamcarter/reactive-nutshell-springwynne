@@ -7,7 +7,8 @@ export default class AddNewsForm extends Component {
     userId: 1,
     url: "",
     title: "",
-    synopsis: ""
+    synopsis: "",
+    timeStamp: new Date()
   }
 
   handleFieldChange = evt => {
@@ -22,7 +23,8 @@ export default class AddNewsForm extends Component {
             userId: this.state.userId,
             url: this.state.url,
             title: this.state.title,
-            synopsis: this.state.synopsis
+            synopsis: this.state.synopsis,
+            timeStamp: new Date()
         }
 
         // Create the article and redirect user to article list
