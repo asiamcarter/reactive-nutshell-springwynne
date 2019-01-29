@@ -4,13 +4,14 @@ import "./Task.css"
 export default class TaskCard extends Component {
 
     state = {
-        checked: false
+        checked: ""
     }
-    handleChange = () => {this.setState({
+    handleChange = () => {
+        this.setState({
         checked: !this.state.checked
     })
     this.putChecked();
-    // this.deleteChecked();
+    console.log(this.props.task.id)
     }
 
     putChecked = () => {
@@ -24,12 +25,10 @@ export default class TaskCard extends Component {
         .then(()=> this.props.history.push("/tasks"))
     }
 
-    // deleteChecked = (id) => {
-    //     if(this.props.task.checked) {
-    //         this.props.deleteTask(id);
-    //         console.log(this.props.task.id)
-    //     }
-    // }
+    deleteChecked = () => {
+        this.props.deleteTask(this.props.task.id)
+        }
+
 
     render() {
         return (
@@ -38,6 +37,7 @@ export default class TaskCard extends Component {
                 <h4>{this.props.task.task}</h4>
                 <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
                     Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/>
+                {/* <button onClick={()=> this.props.deleteTask(this.props.task.id)}> Remove </button> */}
                 </div>
             </div>
         )
