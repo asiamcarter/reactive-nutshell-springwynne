@@ -2,6 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 import NewsList from './news/NewsList'
+import AddNewsForm from './news/AddNewsForm'
 
 
 export default class ApplicationViews extends Component {
@@ -12,7 +13,8 @@ export default class ApplicationViews extends Component {
       events: [],
       tasks: [],
       news: [],
-      messages: []
+      messages: [],
+      friends: []
 
     }
   }
@@ -27,6 +29,8 @@ export default class ApplicationViews extends Component {
         .then(news => {this.setState({news: news})})
         .then(() => DataManager.getAll("messages"))
         .then(messages => {this.setState({messages: messages})})
+        .then(() => DataManager.getAll("friends"))
+        .then(friends => {this.setState({friends: friends})})
   }
 
   render() {
@@ -36,10 +40,14 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/" render={props => {
             return <NewsList {...props}
-            news={this.state.news} />
+            news={this.state.news}
+            friends={this.state.friends} />
             // Remove null and return the component which will show news articles
           }}
         />
+        <Route path="/addnews" render={(props) => {
+                    return <AddNewsForm {...props}/>
+                }} />
         <Route
           path="/events" render={props => {
             return null

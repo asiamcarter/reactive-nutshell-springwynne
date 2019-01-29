@@ -6,7 +6,7 @@ export default class UserNewsCard extends Component {
       <>
       <div key={this.props.newsArticle.id}>
         <h4>{this.props.newsArticle.title}</h4>
-        <button>Save News Article</button>
+        <button>Remove This Article</button>
         <hr></hr>
       </div>
       </>
