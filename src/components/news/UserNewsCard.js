@@ -6,7 +6,10 @@ export default class UserNewsCard extends Component {
     return(
       <>
       <div key={this.props.newsArticle.id}>
+        <a href={this.props.newsArticle.url}>
         <h4>{this.props.newsArticle.title}</h4>
+        </a>
+        <p>{this.props.newsArticle.synopsis}</p>
         <RemoveUserArticleButton
         deleteNewsArticle={this.props.deleteNewsArticle}
         newsArticle={this.props.newsArticle} />
