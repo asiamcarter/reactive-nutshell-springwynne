@@ -19,9 +19,17 @@ export default class AddNewsForm extends Component {
 
   addNewArticle = evt => {
     evt.preventDefault()
+    let urlCorrected = ""
+    if (this.state.url.split(".")[0] === "www") {
+        urlCorrected = `http://${this.state.url}`
+    } else if (this.state.url.split("/")[0] === "http:" || this.state.url.split("/")[0] === "https:") {
+        urlCorrected = this.state.url
+    } else {
+        urlCorrected = `https://www.${this.state.url}`
+    }
         const article = {
             userId: this.state.userId,
-            url: `http://${this.state.url}`,
+            url: urlCorrected,
             title: this.state.title,
             synopsis: this.state.synopsis,
             timeStamp: new Date()

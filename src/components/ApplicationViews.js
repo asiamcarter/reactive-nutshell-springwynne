@@ -8,6 +8,7 @@ import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
 import EditForm from "./tasks/EditForm"
 
+import EventList from './events/EventList'
 
 export default class ApplicationViews extends Component {
   constructor(props) {
@@ -18,22 +19,37 @@ export default class ApplicationViews extends Component {
       news: [],
       messages: [],
       friends: []
-
     }
   }
-
   componentDidMount () {
 
-      DataManager.getAll("events")
-        .then(events => {this.setState({events: events})})
-        .then(() => DataManager.getAll("tasks"))
-        .then(tasks => {this.setState({tasks: tasks})})
-        .then(() => DataManager.getAll("newsItems"))
-        .then(news => {this.setState({news: news})})
-        .then(() => DataManager.getAll("messages"))
-        .then(messages => {this.setState({messages: messages})})
-        .then(() => DataManager.getAll("friends"))
-        .then(friends => {this.setState({friends: friends})})
+    DataManager.getAll("events")
+      .then(events => {
+        let filteredEvents = [];
+        events.forEach(event => {
+          let eventObject = {
+            id: event.id,
+            userId: event.userId,
+            eventName: event.eventName,
+            eventDate: event.eventDate,
+            eventTime: event.eventTime,
+            eventLocation: event.eventLocation,
+            eventDateTimeString: `${event.eventDate}T${event.eventTime}`
+          }
+          filteredEvents.push(eventObject)
+        });
+        let sortedEvents = filteredEvents.sort(function(a,b){
+              return new Date(a.eventDateTimeString) - new Date(b.eventDateTimeString);
+        })
+        this.setState({events: sortedEvents})})
+      .then(() => DataManager.getAll("tasks"))
+      .then(tasks => {this.setState({tasks: tasks})})
+      .then(() => DataManager.getAll("newsItems"))
+      .then(news => {this.setState({news: news})})
+      .then(() => DataManager.getAll("messages"))
+      .then(messages => {this.setState({messages: messages})})
+      .then(() => DataManager.getAll("friends"))
+      .then(friends => {this.setState({friends: friends})})
   }
 
   addTask = task =>
@@ -71,7 +87,6 @@ export default class ApplicationViews extends Component {
     })
     )
 
-
   render() {
     return (
       <React.Fragment>
@@ -91,7 +106,7 @@ export default class ApplicationViews extends Component {
                 }} />
         <Route
           path="/events" render={props => {
-            return null
+            return <EventList {...props} events={this.state.events} />
             // Remove null and return the component which will show list of friends
           }}
         />
