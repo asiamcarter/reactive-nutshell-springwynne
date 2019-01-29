@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
+import EditForm from "./tasks/EditForm"
 
 
 export default class ApplicationViews extends Component {
@@ -105,6 +106,12 @@ export default class ApplicationViews extends Component {
           path="/friends" render={props => {
             return null
             // Remove null and return the component which will show list of friends
+          }}
+        />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <EditForm {...props} putTask={this.putTask}/>
           }}
         />
       </React.Fragment>

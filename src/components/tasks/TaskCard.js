@@ -33,7 +33,7 @@ export default class TaskCard extends Component {
     render() {
         return (
             <div>
-            <div key={this.props.task.id}>
+            <div>
                 <h4>{this.props.task.task}</h4>
                 <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
                     Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/>

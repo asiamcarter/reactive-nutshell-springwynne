@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import TaskCard from "./TaskCard"
+import { Link } from "react-router-dom"
 
 
 export default class TaskList extends Component {
@@ -18,12 +19,15 @@ export default class TaskList extends Component {
                         >
                         Add Task
                     </button>
-                </div>
-                <section className="tasks">
+
                     {this.props.tasks.map(task=>(
+                        <div>
+                        <Link to={`/tasks/${task.id}/edit`}>Edit</Link>
                         <TaskCard key={task.id} task={task} {...this.props} />
+
+                        </div>
                     ))}
-                </section>
+                </div>
             </React.Fragment>
         );
     }
