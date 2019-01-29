@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./Task.css"
+import { Link } from "react-router-dom"
 
 export default class TaskCard extends Component {
 
@@ -11,7 +12,7 @@ export default class TaskCard extends Component {
         checked: !this.state.checked
     })
     this.putChecked();
-    console.log(this.props.task.id)
+    // this.hideChecked();
     }
 
     putChecked = () => {
@@ -25,20 +26,29 @@ export default class TaskCard extends Component {
         .then(()=> this.props.history.push("/tasks"))
     }
 
-    deleteChecked = () => {
-        this.props.deleteTask(this.props.task.id)
-        }
+    // deleteChecked = () => {
+    //     this.props.deleteTask(this.props.task.id, "tasks")
+    //     }
 
+    hideChecked = () => {
+        if (!this.state.checked ) {
+            return (
+                <div>
+                    <h4>{this.props.task.task}</h4>
+                    <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
+                    <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
+                    <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
+                    </div>
+            )
+        } else {
+
+        }
+     }
 
     render() {
         return (
             <div>
-            <div>
-                <h4>{this.props.task.task}</h4>
-                <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
-                    Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/>
-                {/* <button onClick={()=> this.props.deleteTask(this.props.task.id)}> Remove </button> */}
-                </div>
+                {this.hideChecked()}
             </div>
         )
 

@@ -50,26 +50,13 @@ export default class ApplicationViews extends Component {
       tasks: allTasks
     }))
 
-    // deleteTask = (id) =>
-    // DataManager.delete(id, "tasks")
-    // .then(()=> DataManager.getAll("tasks", ""))
-    // .then(allTasks => this.setState ({
-    //   tasks: allTasks
-    // }))
+    deleteTask = (id, dataset) =>
+    DataManager.delete(id, dataset)
+    .then(()=> DataManager.getAll("tasks"))
+    .then(allTasks => this.setState ({
+      tasks: allTasks
+    }))
 
-    deleteTask = id => {
-      return fetch(`http://localhost:5002/tasks/${id}`, {
-        method: "DELETE"
-      })
-        .then(response => response.json())
-        .then(() => fetch(`http://localhost:5002/tasks`))
-        .then(response => response.json())
-        .then(allTasks =>
-          this.setState({
-            tasks: allTasks
-          })
-        );
-    };
   addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
     .then(() => DataManager.getAll("newsItems"))
     .then(news => this.setState({

@@ -25,7 +25,7 @@ export default class EditTaskForm extends Component {
     .then(()=> this.props.history.push("/tasks"))}
 
     componentDidMount() {
-        DataManager.get(this.props.match.params.taskId)
+        DataManager.getById(this.props.match.params.taskId, "tasks")
         .then(task => {
             this.setState({
                 task: task.task,
