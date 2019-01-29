@@ -7,8 +7,9 @@ import MessagesList from './messages/MessagesList'
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
 import EditForm from "./tasks/EditForm"
-
 import EventList from './events/EventList'
+import Register from "./userlogin/Register"
+import Login from "./userlogin/Login"
 
 export default class ApplicationViews extends Component {
   constructor(props) {
@@ -141,6 +142,17 @@ export default class ApplicationViews extends Component {
           path="/tasks/:taskId(\d+)/edit" render={props => {
             return <EditForm {...props} putTask={this.putTask}/>
           }}
+        />
+
+        <Route
+        path="/register" render={props => {
+          return <Register {...props} postUser={this.addTask}/>
+        }}
+        />
+        <Route
+        path="/login" render={props => {
+          return <Login {...props} />
+        }}
         />
       </React.Fragment>
     );
