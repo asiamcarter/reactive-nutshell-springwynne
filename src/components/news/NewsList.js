@@ -17,7 +17,7 @@ export default class NewsList extends Component {
         <section id="userNewsSection">
         <h1 id="usersNews" className="newsHeader">Your Saved News:</h1>
             {timeSorted.map(userArticle =>(
-              <UserNewsCard newsArticle={userArticle} deleteNewsArticle={this.props.deleteNewsArticle} />
+              <UserNewsCard key={userArticle.id} newsArticle={userArticle} deleteNewsArticle={this.props.deleteNewsArticle} />
             ))}
         </section>
         <section>

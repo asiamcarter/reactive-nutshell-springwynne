@@ -5,7 +5,7 @@ export default class UserNewsCard extends Component {
   render() {
     return(
       <>
-      <div key={this.props.newsArticle.id}>
+      <div>
         <a href={this.props.newsArticle.url}>
         <h4>{this.props.newsArticle.title}</h4>
         </a>
