@@ -19,7 +19,8 @@ export default class ApplicationViews extends Component {
       tasks: [],
       news: [],
       messages: [],
-      friends: []
+      friends: [],
+      users: []
     }
   }
   componentDidMount () {
@@ -53,8 +54,22 @@ export default class ApplicationViews extends Component {
       .then(friends => {this.setState({friends: friends})})
   }
 
+  registerHere = (username, password) => {
+    return DataManager.registerHere(username, password)
+    // .then(() => DataManager.getAll("users"))
+    // .then(allUsers => this.setState({
+    //   users: allUsers}))
+    }
+
   addTask = task =>
     DataManager.post("tasks", task)
+    .then(() => DataManager.getAll("tasks"))
+    .then(allTasks => this.setState({
+      tasks: allTasks
+    }))
+
+    addUser = user =>
+    DataManager.post("users", user)
     .then(() => DataManager.getAll("tasks"))
     .then(allTasks => this.setState({
       tasks: allTasks
@@ -85,8 +100,7 @@ export default class ApplicationViews extends Component {
     .then(() => DataManager.getAll("newsItems"))
     .then(news => this.setState({
         news: news
-    })
-    )
+    }))
 
   render() {
     return (
@@ -146,7 +160,7 @@ export default class ApplicationViews extends Component {
 
         <Route
         path="/register" render={props => {
-          return <Register {...props} postUser={this.addTask}/>
+          return <Register {...props} addUser={this.addUser} tasks={this.state.tasks} registerHere={this.registerHere}/>
         }}
         />
         <Route

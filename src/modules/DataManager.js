@@ -33,5 +33,10 @@ export default {
         return fetch (`${remoteURL}/${dataset}/${id}`, {
             method: "DELETE"
         }).then(r => r.json())
+    },
+
+    registerHere(username, password){
+        return fetch(`http://localhost:5002/users?name=${username}&password=${password}`)
+        .then(response => response.json())
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import TaskCard from "./TaskCard"
 
 export default class NewTaskForm extends Component {
 
