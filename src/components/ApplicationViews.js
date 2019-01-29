@@ -6,13 +6,14 @@ import AddNewsForm from './news/AddNewsForm'
 import MessagesList from './messages/MessagesList'
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
+import EditForm from "./tasks/EditForm"
+
 import EventList from './events/EventList'
 
 export default class ApplicationViews extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
       events: [],
       tasks: [],
       news: [],
@@ -50,6 +51,27 @@ export default class ApplicationViews extends Component {
       .then(() => DataManager.getAll("friends"))
       .then(friends => {this.setState({friends: friends})})
   }
+
+  addTask = task =>
+    DataManager.post("tasks", task)
+    .then(() => DataManager.getAll("tasks"))
+    .then(allTasks => this.setState({
+      tasks: allTasks
+    }))
+
+    putTask = (id, task) =>
+    DataManager.put(id, "tasks", task)
+    .then(()=> DataManager.getAll("tasks"))
+    .then(allTasks => this.setState({
+      tasks: allTasks
+    }))
+
+    deleteTask = (id, dataset) =>
+    DataManager.delete(id, dataset)
+    .then(()=> DataManager.getAll("tasks"))
+    .then(allTasks => this.setState ({
+      tasks: allTasks
+    }))
 
   addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
     .then(() => DataManager.getAll("newsItems"))
@@ -91,13 +113,16 @@ export default class ApplicationViews extends Component {
             <Route
               exact path="/tasks" render={props => {
                 return <TaskList {...props}
-                tasks={this.state.tasks} />
+                tasks={this.state.tasks}
+                putTask={this.putTask}
+                deleteTask={this.deleteTask} />
               }}
             />
             <Route
                exact path="/tasks/new" render={props => {
                 return <NewTaskForm {...props}
-                tasks={this.state.tasks} />
+                tasks={this.state.tasks}
+                addTask={this.addTask} />
               }}
               />
         <Route
@@ -109,6 +134,12 @@ export default class ApplicationViews extends Component {
           path="/friends" render={props => {
             return null
             // Remove null and return the component which will show list of friends
+          }}
+        />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <EditForm {...props} putTask={this.putTask}/>
           }}
         />
       </React.Fragment>

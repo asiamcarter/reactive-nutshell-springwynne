@@ -5,8 +5,8 @@ export default {
         return fetch(`${remoteURL}/${dataset}/${id}?${embedItem}`).then(r => r.json())
     },
 
-    getAll(dataset, embedItem) {
-        return fetch(`${remoteURL}/${dataset}?${embedItem}`).then(r=>r.json())
+    getAll(dataset) {
+        return fetch(`${remoteURL}/${dataset}`).then(r=>r.json())
     },
 
     post(dataset, newObject) {
@@ -21,7 +21,7 @@ export default {
 
     put(id, dataset, newObject) {
         return fetch (`${remoteURL}/${dataset}/${id}`, {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
