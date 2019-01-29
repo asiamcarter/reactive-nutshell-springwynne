@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NewsCard from './NewsCard'
+// import NewsCard from './NewsCard'
 import UserNewsCard from './UserNewsCard'
 import AddNewsButton from './AddNewsButton';
 
@@ -13,14 +13,8 @@ export default class NewsList extends Component {
         <section>
         <h1 className="newsHeader">Your Saved News</h1>
             {userSaved.map(userArticle =>(
-              <UserNewsCard newsArticle={userArticle}/>
+              <UserNewsCard newsArticle={userArticle} deleteNewsArticle={this.props.deleteNewsArticle} />
             ))}
-        </section>
-        <section>
-        <h1>Friends News Articles</h1>
-          {this.props.news.map(newsArticle =>(
-            <NewsCard key={newsArticle.id} newsArticle={newsArticle} {...this.props} />
-          ))}
         </section>
         <section>
           <AddNewsButton {...this.props} />

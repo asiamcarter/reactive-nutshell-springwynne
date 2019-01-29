@@ -40,6 +40,14 @@ export default class ApplicationViews extends Component {
     })
     )
 
+  deleteNewsArticle = (id, dataset) =>  DataManager.delete(id, dataset)
+    .then(() => DataManager.getAll("newsItems"))
+    .then(news => this.setState({
+        news: news
+    })
+    )
+
+
   render() {
     return (
       <React.Fragment>
@@ -48,7 +56,8 @@ export default class ApplicationViews extends Component {
           exact path="/" render={props => {
             return <NewsList {...props}
             news={this.state.news}
-            friends={this.state.friends} />
+            friends={this.state.friends}
+            deleteNewsArticle={this.deleteNewsArticle} />
             // Remove null and return the component which will show news articles
           }}
         />
