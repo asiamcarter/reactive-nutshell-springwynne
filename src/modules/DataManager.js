@@ -1,50 +1,37 @@
 const remoteURL = "http://localhost:5002"
 
 export default {
+    getById(id, dataset, embedItem) {
+        return fetch(`${remoteURL}/${dataset}/${id}?${embedItem}`).then(r => r.json())
+    },
 
-  connectToData(fetchObject) {
+    getAll(dataset, embedItem) {
+        return fetch(`${remoteURL}/${dataset}?${embedItem}`).then(r=>r.json())
+    },
 
-      let dataSet = fetchObject.dataSet;
-      let embedItem = fetchObject.embedItem;
-      let fetchType = fetchObject.fetchType;
-      let dataBaseObject = fetchObject.dataBaseObject;
-      let putId = fetchObject.putId;
-      let deleteId = fetchObject.deleteId;
+    post(dataset, newObject) {
+        return fetch (`${remoteURL}/${dataset}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newObject)
+        }).then(r => r.json())
+    },
 
-      if (fetchType === "GET") {
+    put(id, dataset, newObject) {
+        return fetch (`${remoteURL}/${dataset}/${id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newObject)
+        }).then(r => r.json())
+    },
 
-      return fetch(`${remoteURL}/${dataSet}${embedItem}`)
-          .then(r => r.json()) // parses response to JSON
-
-      } else if (fetchType === "POST"){
-
-      // Default options are marked with *
-      return fetch(`${remoteURL}/${dataSet}`, {
-          method: `${fetchType}`, // *GET, POST, PUT, DELETE, etc.
-          headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              // "Content-Type": "application/x-www-form-urlencoded",
-          },
-          // referrer: "no-referrer", // no-referrer, *client
-          body: JSON.stringify(dataBaseObject), // body data type must match "Content-Type" header
-      })
-
-      } else if(fetchType === "PUT"){
-      return fetch(`${remoteURL}/${dataSet}/${putId}`, {
-          method: `${fetchType}`, // *GET, POST, PUT, DELETE, etc.
-          headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              // "Content-Type": "application/x-www-form-urlencoded",
-          },
-          // referrer: "no-referrer", // no-referrer, *client
-          body: JSON.stringify(dataBaseObject), // body data type must match "Content-Type" header
-      })
-      } else if (fetchType === "DELETE") {
-      return fetch(`${remoteURL}/${dataSet}/${deleteId}`, {
-          method: `${fetchType}`, // *GET, POST, PUT, DELETE, etc.
-      })
-      } else {
-          console.log ("YOU SCREWED IT UP")
-      }
-  }
+    delete(id, dataset) {
+        return fetch (`${remoteURL}/${dataset}/${id}`, {
+            method: "DELETE"
+        }).then(r => r.json())
+    }
 }

@@ -1,60 +1,70 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import DataManager from "../modules/DataManager"
-import EventList from "./events/EventList";
-
+import NewsList from './news/NewsList'
+import AddNewsForm from './news/AddNewsForm'
+import MessagesList from './messages/MessagesList'
+import TaskList from "./tasks/TaskList"
+import NewTaskForm from "./tasks/NewTaskForm"
+import EventList from './events/EventList'
 
 export default class ApplicationViews extends Component {
-
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-        events: [],
-        tasks: [],
-        news: [],
-        messages: [],
-        users: []
+
+      events: [],
+      tasks: [],
+      news: [],
+      messages: [],
+      friends: []
+
     }
-    this.userLogin = this.userLogin.bind(this)
-  }
-
-  userLogin() {
-
-    sessionStorage.setItem("userId", 1)
   }
   componentDidMount () {
 
-    let currentUser = 1;
-    DataManager.connectToData({dataSet: 'events', fetchType: 'GET', embedItem: ""})
+    DataManager.getAll("events")
       .then(events => {
         let filteredEvents = [];
         events.forEach(event => {
-            let eventObject = {
-                id: event.id,
-                userId: event.userId,
-                eventName: event.eventName,
-                eventDate: event.eventDate,
-                eventTime: event.eventTime,
-                eventLocation: event.eventLocation,
-                eventDateTimeString: `${event.eventDate}T${event.eventTime}`
-            }
-            filteredEvents.push(eventObject)
+          let eventObject = {
+            id: event.id,
+            userId: event.userId,
+            eventName: event.eventName,
+            eventDate: event.eventDate,
+            eventTime: event.eventTime,
+            eventLocation: event.eventLocation,
+            eventDateTimeString: `${event.eventDate}T${event.eventTime}`
+          }
+          filteredEvents.push(eventObject)
         });
         let sortedEvents = filteredEvents.sort(function(a,b){
               return new Date(a.eventDateTimeString) - new Date(b.eventDateTimeString);
-          })
+        })
         this.setState({events: sortedEvents})})
-
-      .then(() => DataManager.connectToData({dataSet: 'tasks', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(() => DataManager.getAll("tasks"))
       .then(tasks => {this.setState({tasks: tasks})})
-      .then(() => DataManager.connectToData({dataSet: 'newsItems', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(() => DataManager.getAll("newsItems"))
       .then(news => {this.setState({news: news})})
-      .then(() => DataManager.connectToData({dataSet: 'messages', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
+      .then(() => DataManager.getAll("messages"))
       .then(messages => {this.setState({messages: messages})})
-      .then(() => DataManager.connectToData({dataSet: 'users', fetchType: 'GET', embedItem: `?userId=${currentUser}`}))
-      .then(users => {this.setState({users: users})})
-
+      .then(() => DataManager.getAll("friends"))
+      .then(friends => {this.setState({friends: friends})})
   }
+
+  addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
+    .then(() => DataManager.getAll("newsItems"))
+    .then(news => this.setState({
+        news: news
+    })
+    )
+
+  deleteNewsArticle = (id, dataset) =>  DataManager.delete(id, dataset)
+    .then(() => DataManager.getAll("newsItems"))
+    .then(news => this.setState({
+        news: news
+    })
+    )
 
   render() {
     return (
@@ -62,10 +72,17 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return null
+            return <NewsList {...props}
+            news={this.state.news}
+            friends={this.state.friends}
+            deleteNewsArticle={this.deleteNewsArticle} />
             // Remove null and return the component which will show news articles
           }}
         />
+        <Route path="/addnews" render={(props) => {
+                    return <AddNewsForm {...props}
+                    addNewsArticle={this.addNewsArticle} />
+                }} />
         <Route
           path="/events" render={props => {
             return <EventList {...props} events={this.state.events} />
@@ -73,15 +90,20 @@ export default class ApplicationViews extends Component {
           }}
         />
             <Route
-              path="/tasks" render={props => {
-                return null
-                // Remove null and return the component which will show the user's tasks
+              exact path="/tasks" render={props => {
+                return <TaskList {...props}
+                tasks={this.state.tasks} />
               }}
             />
+            <Route
+               exact path="/tasks/new" render={props => {
+                return <NewTaskForm {...props}
+                tasks={this.state.tasks} />
+              }}
+              />
         <Route
           path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+            return <MessagesList />
           }}
         />
         <Route
