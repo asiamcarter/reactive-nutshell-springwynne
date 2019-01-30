@@ -25,8 +25,7 @@ export default class NewTaskForm extends Component {
             checked: false
         }
         this.props.addTask(task)
-        .then(()=> this.props.history.push("/tasks"))
-
+            .then(()=> this.props.history.push("/tasks"))
     }
 
     render() {

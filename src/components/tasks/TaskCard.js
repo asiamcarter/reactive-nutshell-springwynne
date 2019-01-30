@@ -1,20 +1,16 @@
 import React, { Component } from "react"
-import "./Task.css"
 import { Link } from "react-router-dom"
-
 export default class TaskCard extends Component {
 
     state = {
         checked: ""
     }
+
     handleChange = () => {
         this.setState({
         checked: !this.state.completed
-    })
-    let sessionId = sessionStorage.getItem("User")
-    console.log(this.props.task.userId, sessionId)
-    this.putChecked();
-    // this.hideChecked();
+        })
+        this.putChecked();
     }
 
     putChecked = () => {
@@ -25,45 +21,24 @@ export default class TaskCard extends Component {
             checked: !this.state.checked
         }
         this.props.putTask(this.props.task.id,task)
-        .then(()=> this.props.history.push("/tasks"))
+            .then(()=> this.props.history.push("/tasks"))
     }
 
-    // deleteChecked = () => {
-    //     this.props.deleteTask(this.props.task.id, "tasks")
-    //     }
-
     hideChecked = () => {
+        let sessionId = sessionStorage.getItem("User")
+        if (!this.state.checked && this.props.task.userId === Number(sessionId))
+            {
+                return (
+                    <div>
+                        <h4>{this.props.task.task}</h4>
+                        <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
+                        <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
+                        <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
+                        </div>
+                        )
 
-    let sessionId = sessionStorage.getItem("User")
-    if (!this.state.checked && this.props.task.userId === Number(sessionId))
-          {
-            return (
-                <div>
-                    <h4>{this.props.task.task}</h4>
-                    <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
-                    <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
-                    <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
-                    </div>
-                    )
-
-        }
+            }
      }
-
-    //  displayTasks = () => {
-
-    //    if (this.props.task.userId === sessionId) {
-    //     return (
-    //         <div>
-    //             <h4>{this.props.task.task}</h4>
-    //             <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
-    //             <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
-    //             <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
-    //             </div>
-    //     )
-    //    }
-
-
-    //  }
 
     render() {
         return (
@@ -72,6 +47,5 @@ export default class TaskCard extends Component {
                 {/* {this.displayTasks()} */}
             </div>
         )
-
-     }
+    }
 }

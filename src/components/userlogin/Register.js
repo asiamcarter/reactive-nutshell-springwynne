@@ -27,7 +27,6 @@ export default class Register extends Component {
               alert("You're in!")
               allUsers.forEach(user => {
                 sessionStorage.setItem("User", user.id);
-                let sessionUser = sessionStorage.getItem("User")
                 const newUser = {
                     userName: this.state.userName,
                     email: this.state.email,
