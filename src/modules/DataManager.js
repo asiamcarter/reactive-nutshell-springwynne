@@ -36,7 +36,7 @@ export default {
     },
 
     registerHere(username, password){
-        return fetch(`http://localhost:5002/users?name=${username}&password=${password}`)
+        return fetch(`http://localhost:5002/users?userName=${username}&password=${password}`)
         .then(response => response.json())
     }
 }

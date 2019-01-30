@@ -17,12 +17,14 @@ export default class Login extends Component {
 
     onLogin = (evt) =>
     {evt.preventDefault()
+        console.log(this.state.userName)
     this.props.registerHere(this.state.userName, this.state.password)
             .then(allUsers => {
-                // console.log(allUsers)
+                console.log(allUsers)
                 if( allUsers.length < 1) {
                     alert("We can't seem to find you! Try registering below")
-                } else {
+                }
+                else {
                     allUsers.forEach(user=> {
                         let loggedIn= false;
 
