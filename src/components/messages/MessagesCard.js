@@ -15,7 +15,7 @@ export default class MessagesCard extends Component {
       <section className={`${useris}-message`}>
       <h5>{personIs.userName}</h5>
       <p>{this.props.message.message}</p>
-      <MessageEditButton user={this.props.message.userId}/>
+      <MessageEditButton message={this.props.message}/>
       </section>
     )
   }
