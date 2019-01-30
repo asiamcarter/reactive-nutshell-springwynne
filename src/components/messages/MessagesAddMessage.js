@@ -4,9 +4,7 @@ export default class MessagesAddMessage extends Component {
 
   state = {
     userId: 1,
-    url: "",
-    title: "",
-    synopsis: "",
+    message: "",
     timeStamp: new Date()
   }
 
@@ -18,31 +16,24 @@ export default class MessagesAddMessage extends Component {
 
   addNewArticle = evt => {
     evt.preventDefault()
-    let urlCorrected = ""
-    if (this.state.url.split(".")[0] === "www") {
-        urlCorrected = `http://${this.state.url}`
-    } else if (this.state.url.split("/")[0] === "http:" || this.state.url.split("/")[0] === "https:") {
-        urlCorrected = this.state.url
-    } else {
-        urlCorrected = `https://www.${this.state.url}`
-    }
-        const article = {
+        const newMessage = {
             userId: this.state.userId,
-            url: urlCorrected,
-            title: this.state.title,
-            synopsis: this.state.synopsis,
+            message: this.state.message,
             timeStamp: new Date()
         }
 
-        // Create the article and redirect user to article list
-        this.props.addNewsArticle("newsItems", article).then(() => this.props.history.push("/"))
+        // Create the newMessage and redirect user to newMessage list
+        this.props.addMessage("messages", newMessage);
   }
 
   render() {
     return(
       <>
-      <input type="text" placeholder="New Message" />
-      <button>Send</button>
+      <input type="text"
+        placeholder="New Message"
+        onChange={this.handleFieldChange}
+        id="message" />
+      <button type="submit" onClick={this.addNewArticle} >Send</button>
       </>
     )
   }

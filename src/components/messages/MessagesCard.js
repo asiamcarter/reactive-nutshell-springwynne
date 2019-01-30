@@ -5,7 +5,6 @@ export default class MessagesCard extends Component {
     let userId = 1;
     let useris ="";
     let personIs = this.props.userDatabase.find(user => user.id === this.props.userId)
-    console.log(personIs.id)
     if (userId === this.props.userId) {
       useris = "user"
     } else {

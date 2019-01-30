@@ -19,7 +19,8 @@ export default class MessagesList extends Component {
         userDatabase={this.props.users} />
       )
         }
-        <MessagesAddMessage />
+        <MessagesAddMessage
+        addMessage={this.props.addMessage} />
       </section>
       </>
     )
