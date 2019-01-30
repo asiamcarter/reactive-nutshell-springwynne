@@ -14,7 +14,6 @@ export default class Friends  extends Component {
 							<Friend key={friend.id} friend={friend} deleteFriend={this.props.deleteFriend}/>
 						</div>
 				)}
-			<button type="button" onClick={()=> this.props.deleteFriend(this.props.friend.id, "friends")}>Find Friends</button>
 			</section>
 		)
 	}
