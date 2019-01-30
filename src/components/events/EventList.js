@@ -4,31 +4,36 @@ import FriendEvent from './FriendEvent'
 
 export default class EventList extends Component {
 
-    render() {
+	render() {
 
-        let EventDisplay = (event) => {
-            let currentUser = 1;
-            if (currentUser === event.event.userId) {
+		let EventDisplay = (event) => {
+			let currentUser = 1;
 
-                return <div><UserEvent data={{id: event.event.id, eventName: event.event.eventName, eventDate: event.event.eventDate, eventTime: event.event.eventTime, eventLocation: event.event.eventLocation}}/> <br /></div>
+			if (currentUser === event.event.userId) {
 
-            } else {
+				return <div><UserEvent deleteEvent={this.props.deleteEvent} data={{id: event.event.id, eventName: event.event.eventName, eventDate: event.event.eventDate, eventTime: event.event.eventTime, eventLocation: event.event.eventLocation, userId: event.event.userId}}/> <br /></div>
 
-                return <div><FriendEvent data={{id: event.event.id, eventName: event.event.eventName, eventDate: event.event.eventDate, eventTime: event.event.eventTime, eventLocation: event.event.eventLocation}}/> <br /></div>
-            }
-        }
+			} else {
 
-        return (
+				return <div><FriendEvent data={{id: event.event.id, eventName: event.event.eventName, eventDate: event.event.eventDate, eventTime: event.event.eventTime, eventLocation: event.event.eventLocation, userId: event.event.userId}}/> <br /></div>
+			}
+		}
 
-            <React.Fragment>
-            {
-                this.props.events.map(event =>
-                <section key={event.id}>
-                    <EventDisplay event={event}/>
-                </section>
-                )
-            }
-            </React.Fragment>
-        )
-    }
+		return (
+
+			<React.Fragment>
+				{
+					<section >
+					<h1>Events</h1>
+					<button type="button" className="addEventButton" onClick={()=> {this.props.history.push("/events/new")}}>Add Event</button>
+					{
+						this.props.events.map(event =>
+								<EventDisplay key={event.id} event={event}/>
+						)
+					}
+				</section>
+				}
+			</React.Fragment>
+		)
+	}
 }
