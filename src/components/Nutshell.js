@@ -62,7 +62,11 @@ export default class Nutshell extends Component {
     DataManager.getAll("users")
     .then(users => {this.setState({users: users})})
     .then(() => DataManager.getAll("tasks"))
-    .then(tasks => {this.setState({tasks: tasks})})
+    .then(tasks => {
+      let filteredTasks = tasks.filter(task => {
+        return task.complete === false
+      })
+      {this.setState({tasks: filteredTasks})}})
     .then(() => DataManager.getAll("messages"))
     .then(messages => {this.setState({messages: messages})})
     .then(() => DataManager.getAll("friends"))
