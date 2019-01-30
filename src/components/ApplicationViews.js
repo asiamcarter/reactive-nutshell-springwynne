@@ -4,6 +4,7 @@ import DataManager from "../modules/DataManager"
 import NewsList from './news/NewsList'
 import AddNewsForm from './news/AddNewsForm'
 import MessagesList from './messages/MessagesList'
+import MessageEditMessageForm from './messages/MessageEditMessageForm'
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
 import EditForm from "./tasks/EditForm"

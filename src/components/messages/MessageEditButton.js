@@ -8,7 +8,8 @@ export default class MessageEditButton extends Component {
       return null
     }
     return(
-      <button className={`edit-message-${this.props.message.id}`}>edit</button>
+      <button onClick={()=> this.props.messageToEdit()}
+        className={`edit-message-${this.props.message.id}`}>edit</button>
     )
   }
 }
