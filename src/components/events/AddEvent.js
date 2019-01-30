@@ -13,7 +13,7 @@ export default class AddEvent extends Component {
 
 		}
 		this.handleInputChange = this.handleInputChange.bind(this)
-		// this.addEvent = this.addEvent.bind(this)
+
 	}
 	handleInputChange(event) {
 		const target = event.target;

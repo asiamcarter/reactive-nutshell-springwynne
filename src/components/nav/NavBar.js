@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import FriendsSearch from './FriendSearch'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -23,6 +24,7 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Friends</Link>
                     </li>
+                    <Link to="/friends/searchresults"><FriendsSearch jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange}/></Link>
                 </ul>
             </nav>
         )

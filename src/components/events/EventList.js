@@ -8,6 +8,7 @@ export default class EventList extends Component {
 
 		let EventDisplay = (event) => {
 			let currentUser = 1;
+
 			if (currentUser === event.event.userId) {
 
 				return <div><UserEvent deleteEvent={this.props.deleteEvent} data={{id: event.event.id, eventName: event.event.eventName, eventDate: event.event.eventDate, eventTime: event.event.eventTime, eventLocation: event.event.eventLocation, userId: event.event.userId}}/> <br /></div>
