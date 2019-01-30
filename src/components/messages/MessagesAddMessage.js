@@ -14,7 +14,7 @@ export default class MessagesAddMessage extends Component {
     this.setState(stateToChange)
 }
 
-  addNewArticle = evt => {
+  addNewMessage = evt => {
     evt.preventDefault()
         const newMessage = {
             userId: this.state.userId,
@@ -33,7 +33,7 @@ export default class MessagesAddMessage extends Component {
         placeholder="New Message"
         onChange={this.handleFieldChange}
         id="message" />
-      <button type="submit" onClick={this.addNewArticle} >Send</button>
+      <button type="submit" onClick={this.addNewMessage} >Send</button>
       </>
     )
   }

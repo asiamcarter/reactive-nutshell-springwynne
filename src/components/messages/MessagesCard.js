@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import MessageEditButton from './MessageEditButton'
 
 export default class MessagesCard extends Component {
   render() {
+
+    function userEdit() {
+      return <button></button>
+    }
+
     let userId = 1;
     let useris ="";
     let personIs = this.props.userDatabase.find(user => user.id === this.props.userId)
@@ -14,6 +20,7 @@ export default class MessagesCard extends Component {
       <section className={`${useris}-message`}>
       <h5>{personIs.userName}</h5>
       <p>{this.props.message.message}</p>
+      <MessageEditButton />
       </section>
     )
   }
