@@ -13,7 +13,10 @@ export default class MessagesList extends Component {
       <section className="message-container">
         {
       this.props.messages.map( message =>
-      <MessagesCard key={message.id} message={message} userId={message.userId} userDatabase={this.props.users} />
+      <MessagesCard key={message.id}
+        message={message}
+        userId={message.userId}
+        userDatabase={this.props.users} />
       )
         }
         <MessagesAddMessage />

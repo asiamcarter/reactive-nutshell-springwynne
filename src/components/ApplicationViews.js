@@ -77,14 +77,14 @@ export default class ApplicationViews extends Component {
     }))
 
   addNewsArticle = (dataset, newObject) => DataManager.post(dataset, newObject)
-    .then(() => DataManager.getAll("newsItems"))
+    .then(() => DataManager.getAll(dataset))
     .then(news => this.setState({
         news: news
     })
     )
 
   deleteNewsArticle = (id, dataset) =>  DataManager.delete(id, dataset)
-    .then(() => DataManager.getAll("newsItems"))
+    .then(() => DataManager.getAll(dataset))
     .then(news => this.setState({
         news: news
     })
@@ -132,7 +132,8 @@ export default class ApplicationViews extends Component {
           path="/messages" render={props => {
             return <MessagesList {...props}
             messages={this.state.messages}
-            users={this.state.users} />
+            users={this.state.users}
+            addNewsArticle={this.addNewsArticle} />
           }}
         />
         <Route
