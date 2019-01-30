@@ -44,7 +44,7 @@ export default class ApplicationViews extends Component {
               return new Date(a.eventDateTimeString) - new Date(b.eventDateTimeString);
         })
         this.setState({events: sortedEvents})})
-      .then(() => DataManager.getAll("tasks"))
+      .then(() => DataManager.getAllTasks())
       .then(tasks => {this.setState({tasks: tasks})})
       .then(() => DataManager.getAll("newsItems"))
       .then(news => {this.setState({news: news})})

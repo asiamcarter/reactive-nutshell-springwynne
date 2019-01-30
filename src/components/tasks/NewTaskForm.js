@@ -6,7 +6,7 @@ export default class NewTaskForm extends Component {
         userId: "",
         task: "",
         expectedCompletionDate: "",
-        checked: ""
+        complete: ""
     }
 
     handleFieldChange = evt => {
@@ -22,7 +22,7 @@ export default class NewTaskForm extends Component {
             userId: Number(sessionId),
             task: this.state.task,
             expectedCompletionDate: this.state.expectedCompletionDate,
-            checked: false
+            complete: false
         }
         this.props.addTask(task)
             .then(()=> this.props.history.push("/tasks"))

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 export default class TaskCard extends Component {
 
     state = {
-        checked: ""
+        complete: true
     }
 
     handleChange = () => {
         this.setState({
-        checked: !this.state.completed
+        complete: !this.state.complete
         })
         this.putChecked();
     }
@@ -18,15 +18,15 @@ export default class TaskCard extends Component {
             userId: this.props.task.userId,
             task: this.props.task.task,
             expectedCompletionDate: this.props.task.expectedCompletionDate,
-            checked: !this.state.checked
+            complete: this.state.complete
         }
         this.props.putTask(this.props.task.id,task)
             .then(()=> this.props.history.push("/tasks"))
     }
 
-    hideChecked = () => {
+    showChecked = () => {
         let sessionId = sessionStorage.getItem("User")
-        if (!this.state.checked && this.props.task.userId === Number(sessionId))
+        if (this.state.complete === true && this.props.task.userId === Number(sessionId))
             {
                 return (
                     <div>
@@ -36,15 +36,13 @@ export default class TaskCard extends Component {
                         <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
                         </div>
                         )
-
             }
      }
 
     render() {
         return (
             <div>
-                {this.hideChecked()}
-                {/* {this.displayTasks()} */}
+                {this.showChecked()}
             </div>
         )
     }
