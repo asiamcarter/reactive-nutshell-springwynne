@@ -6,7 +6,7 @@ export default class MessagesCard extends Component {
   render() {
 
     let userId = 1;
-    console.log("num",this.props.num)
+    console.log("messageIdForEditing",this.props.messageIdForEditing)
 
     let useris ="";
     let personIs = this.props.userDatabase.find(user => user.id === this.props.userId)
@@ -15,7 +15,7 @@ export default class MessagesCard extends Component {
     } else {
       useris = "nonUser"
     }
-    if (this.props.num === this.props.message.id) {
+    if (this.props.messageIdForEditing === this.props.message.id) {
       return(
       <section className={`${useris}-message`}>
       <h5>{personIs.userName}</h5>

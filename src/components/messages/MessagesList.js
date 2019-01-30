@@ -5,7 +5,7 @@ import MessagesAddMessage from './MessagesAddMessage'
 export default class MessagesList extends Component {
 
   state = {
-    num: 0,
+    messageIdForEditing: 0,
   }
   render() {
     let userId = 1
@@ -14,7 +14,7 @@ export default class MessagesList extends Component {
 
      const messageToEdit = (messageId) => {
       console.log(messageId, userId)
-      this.setState({num: messageId})
+      this.setState({messageIdForEditing: messageId})
 
     }
 
@@ -34,7 +34,7 @@ export default class MessagesList extends Component {
         history={this.props.history}
         userDatabase={this.props.users}
         messageToEdit={messageToEdit}
-        num={this.state.num} />
+        messageIdForEditing={this.state.messageIdForEditing} />
       )
         }
         <MessagesAddMessage
