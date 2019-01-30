@@ -3,8 +3,20 @@ import MessagesCard from './MessagesCard'
 import MessagesAddMessage from './MessagesAddMessage'
 
 export default class MessagesList extends Component {
-  render() {
 
+  state = {
+    num: 0,
+  }
+  render() {
+    let userId = 1
+    let edit = true;
+
+
+     const messageToEdit = (messageId) => {
+      console.log(messageId, userId)
+      this.setState({num: messageId})
+
+    }
 
 
     if (this.props.messages.length === 0 ||  this.props.users.length === 0) {
@@ -20,7 +32,9 @@ export default class MessagesList extends Component {
         message={message}
         userId={message.userId}
         history={this.props.history}
-        userDatabase={this.props.users} />
+        userDatabase={this.props.users}
+        messageToEdit={messageToEdit}
+        num={this.state.num} />
       )
         }
         <MessagesAddMessage
