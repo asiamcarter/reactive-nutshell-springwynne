@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class MessageEditButton extends Component {
 
   render() {
@@ -8,7 +9,7 @@ export default class MessageEditButton extends Component {
       return null
     }
     return(
-      <button onClick={()=> this.props.messageToEdit()}
+      <button onClick={()=> this.props.messageToEdit(this.props.message.id)}
         className={`edit-message-${this.props.message.id}`}>edit</button>
     )
   }
