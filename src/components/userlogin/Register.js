@@ -25,8 +25,6 @@ export default class Register extends Component {
            }
           else {
               alert("You're in!")
-              allUsers.forEach(user => {
-                sessionStorage.setItem("User", user.id);
                 const newUser = {
                     userName: this.state.userName,
                     email: this.state.email,
@@ -34,7 +32,6 @@ export default class Register extends Component {
                 }
                 this.props.addUser(newUser)
                 this.props.history.push("/")
-              })
             }
         })
     }
@@ -56,7 +53,7 @@ export default class Register extends Component {
                         <label htmlFor="Password">Password:</label>
                         <input type="text" required onChange={this.handleFieldChange} id="password"/>
                     </div>
-                    <button type="submit" onClick={this.getAllUsers}> Register a new account. </button>
+                    <button type="submit" onClick={this.getAllUsers}> Register </button>
                 </form>
             </React.Fragment>
         )

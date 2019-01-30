@@ -237,7 +237,7 @@ export default class ApplicationViews extends Component {
         <Route path="/friends/searchresults" render={(props) => {
           return <FriendSearchResults {...props} jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange} addFriend={this.addFriend}/>}} />
       <Route path="/register" render={props => {
-          return <Register {...props} addUser={this.props.addUser} tasks={this.props.tasks} registerHere={this.props.registerHere} getAll={this.props.getAllUsers}/>}}/>
+          return <Register {...props} addUser={this.props.addUser} users={this.props.users} registerHere={this.props.registerHere} getAll={this.props.getAllUsers}/>} }/>
         <Route path="/login" render={props => {
           return <Login {...props} registerHere={this.props.registerHere} />}}/>
 

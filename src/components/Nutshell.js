@@ -90,16 +90,20 @@ export default class Nutshell extends Component {
   }
     registerHere = (username, password) => {
     return DataManager.registerHere(username, password)
+    // .then(() => DataManager.getAll("users"))
+    // .then(allUsers => this.setState({
+    //   users: allUsers}))
     }
 
     getAllUsers = () => {
-      return DataManager.getAll("users")
+      return DataManager.getAll("users", "")
+    //  .then(()=> this.populateAppState())
     }
 
     addUser = user =>
     DataManager.post("users", user)
-    .then(() => this.populateAppState()
-    )
+    .then(() => this.populateAppState())
+    .then(()=>this.registerHere(user.username, user.password))
 
   render() {
     return (

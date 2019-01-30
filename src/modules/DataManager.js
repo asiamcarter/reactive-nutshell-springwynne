@@ -7,7 +7,7 @@ export default {
     },
 
     getAll(dataset, embedItem) {
-        return fetch(`${remoteURL}/${dataset}?${embedItem}`).then(r=>r.json())
+        return fetch(`${remoteURL}/${dataset}`).then(r=>r.json())
     },
 
     post(dataset, newObject) {
