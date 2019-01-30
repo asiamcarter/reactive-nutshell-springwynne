@@ -29,8 +29,6 @@ export default class Login extends Component {
                         }
                     if (loggedIn === true){
                         sessionStorage.setItem("User", user.id);
-                        let sessionId= sessionStorage.getItem("User")
-                        console.log(sessionId)
                         this.props.history.push("/");
                     }
                 })
