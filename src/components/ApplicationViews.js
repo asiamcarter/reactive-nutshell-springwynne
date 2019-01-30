@@ -102,6 +102,13 @@ export default class ApplicationViews extends Component {
         news: news
     }))
 
+    getAllUsers = () => {
+      return DataManager.getAll("users")
+      // .then(allUsers=> this.setState({
+      //   users: allUsers
+      // }))
+    }
+
   render() {
     return (
       <React.Fragment>
@@ -160,7 +167,11 @@ export default class ApplicationViews extends Component {
 
         <Route
         path="/register" render={props => {
-          return <Register {...props} addUser={this.addUser} tasks={this.state.tasks} registerHere={this.registerHere}/>
+          return <Register {...props}
+          addUser={this.addUser}
+          tasks={this.state.tasks}
+          registerHere={this.registerHere}
+          getAll={this.getAllUsers}/>
         }}
         />
         <Route

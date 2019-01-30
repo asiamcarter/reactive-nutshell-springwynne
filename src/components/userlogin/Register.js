@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-// import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom
 
 export default class Register extends Component {
 
@@ -13,43 +13,38 @@ export default class Register extends Component {
         const stateToChange= {};
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange);
+        // console.log(stateToChange)
     };
 
-    buildNewUser = evt => {
+    getAllUsers = evt => {
         evt.preventDefault();
-        const user = {
-            userName: this.state.userName,
-            email: this.state.email,
-            password: this.state.password
-        }
-        this.props.addUser(user)
-        .then(()=> {
-            console.log("user:", user)
-            this.props.registerHere(user.userName, user.password)
-            .then(allUsers => {
-                // console.log(allUsers)
-                    allUsers.forEach(users=> {
-                        let loggedIn= false;
-                        sessionStorage.setItem("User", users.id);
-                        let sessionUser = sessionStorage.getItem("User")
-                        console.log(user, sessionUser)
-                        if (user.userName === users.userName && user.password === users.password) {
-                            loggedIn= true;
-                        }
-                        if (loggedIn=== true){
-                            this.props.history.push("/")
-                        }
-                    })
-                })
-            })
-
-        }
-
-
-
-
-
-
+       this.props.getAll()
+       .then(allUsers => {
+           let usersArray = allUsers.filter(user => {
+               console.log(this.state.userName)
+               return (user.userName === this.state.userName)
+           })
+           console.log("USER ARRAY:", usersArray)
+           if (usersArray.length > 0) {
+               alert("Sorry, this username is taken!")
+           }
+          else {
+              alert("You're in!")
+              allUsers.forEach(user => {
+                sessionStorage.setItem("User", user.id);
+                let sessionUser = sessionStorage.getItem("User")
+                console.log(sessionUser)
+                  const newUser = {
+                    userName: this.state.userName,
+                    email: this.state.email,
+                    password: this.state.password
+                  }
+                   this.props.addUser(newUser)
+                   this.props.history.push("/")
+              })
+            }
+    })
+   }
 
     render() {
         return (
@@ -68,9 +63,9 @@ export default class Register extends Component {
                         <label htmlFor="Password">Password:</label>
                             <input type="text" required onChange={this.handleFieldChange} id="password"/>
                     </div>
-                    <button type="submit" onClick={this.buildNewUser}> Register a new account. </button>
+                    <button type="submit" onClick={this.getAllUsers}> Register a new account. </button>
                 </form>
             </React.Fragment>
         )
-    }
 }
+    }
