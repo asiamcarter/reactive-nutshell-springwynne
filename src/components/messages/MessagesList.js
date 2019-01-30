@@ -5,8 +5,11 @@ import MessagesAddMessage from './MessagesAddMessage'
 export default class MessagesList extends Component {
   render() {
 
-    // this.props.users
-    // this.props.messages
+
+
+    if (this.props.messages.length === 0 ||  this.props.users.length === 0) {
+      return null
+    }
     return(
       <>
       <h2>Messages</h2>

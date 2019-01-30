@@ -3,11 +3,6 @@ import MessageEditButton from './MessageEditButton'
 
 export default class MessagesCard extends Component {
   render() {
-
-    function userEdit() {
-      return <button></button>
-    }
-
     let userId = 1;
     let useris ="";
     let personIs = this.props.userDatabase.find(user => user.id === this.props.userId)

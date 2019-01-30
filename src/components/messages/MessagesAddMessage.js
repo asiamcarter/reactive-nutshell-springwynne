@@ -35,6 +35,7 @@ export default class MessagesAddMessage extends Component {
         id="message" />
       <button type="submit" onClick={this.addNewMessage} >Send</button>
       </>
+
     )
   }
 }
