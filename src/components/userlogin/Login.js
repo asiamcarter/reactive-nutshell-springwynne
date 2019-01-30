@@ -15,37 +15,28 @@ export default class Login extends Component {
         this.setState(stateToChange);
     };
 
-    onLogin = (evt) =>
-    {evt.preventDefault()
-        console.log(this.state.userName)
+    onLogin = (evt) => {
+    evt.preventDefault();
     this.props.registerHere(this.state.userName, this.state.password)
-            .then(allUsers => {
-                console.log(allUsers)
-                if( allUsers.length < 1) {
-                    alert("We can't seem to find you! Try registering below")
-                }
-                else {
-                    allUsers.forEach(user=> {
-                        let loggedIn= false;
-
-                        if (this.state.userName === user.userName && this.state.password === user.password) {
+        .then(allUsers => {
+            if(allUsers.length < 1) {
+                alert("We can't seem to find you! Try registering below")
+            } else {
+                allUsers.forEach(user => {
+                    let loggedIn= false;
+                    if (this.state.userName === user.userName && this.state.password === user.password) {
                             loggedIn= true;
                         }
-                        if (loggedIn=== true){
-                            sessionStorage.setItem("User", user.id);
-                            let sessionUser = sessionStorage.getItem("User")
-                            console.log(sessionUser)
-                            this.props.history.push("/")
-                        } else {
-                            console.log("We don't seem to recognize you. Try registering!")
-                        }
-
-
-                    })
-                }
+                    if (loggedIn === true){
+                        sessionStorage.setItem("User", user.id);
+                        let sessionUser = sessionStorage.getItem("User");
+                        this.props.history.push("/");
+                    }
                 })
-
             }
+        })
+
+    }
 
     render() {
         return (
