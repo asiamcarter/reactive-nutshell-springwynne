@@ -18,7 +18,8 @@ export default class ApplicationViews extends Component {
       tasks: [],
       news: [],
       messages: [],
-      friends: []
+      friends: [],
+      users: []
     }
   }
   componentDidMount () {
@@ -50,6 +51,8 @@ export default class ApplicationViews extends Component {
       .then(messages => {this.setState({messages: messages})})
       .then(() => DataManager.getAll("friends"))
       .then(friends => {this.setState({friends: friends})})
+      .then(() => DataManager.getAll("users"))
+      .then(users => {this.setState({users: users})})
   }
 
   addTask = task =>
@@ -129,8 +132,7 @@ export default class ApplicationViews extends Component {
           path="/messages" render={props => {
             return <MessagesList {...props}
             messages={this.state.messages}
-            users={this.state.users}
-            embedded={DataManager.getAll("users", "messages")} />
+            users={this.state.users} />
           }}
         />
         <Route
@@ -142,7 +144,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/tasks/:taskId(\d+)/edit" render={props => {
-            return <EditForm {...props} putTask={this.putTask}/>
+            return <EditForm {...props} putTask={this.putTask} />
           }}
         />
       </React.Fragment>
