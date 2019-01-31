@@ -110,12 +110,19 @@ export default class Nutshell extends Component {
     .then(() => this.populateAppState())
     .then(()=>this.registerHere(user.username, user.password))
 
+    isAuthenticated = () => sessionStorage.getItem("User") !== null
 
+    showNav = () => {
+      if (this.isAuthenticated()) {
+        return <NavBar jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} />
+      }
+    }
 
   render() {
     return (
       <React.Fragment>
-        <NavBar jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange}/>
+        {this.showNav()}
+        {/* <NavBar jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange}/> */}
         <ApplicationViews events={this.state.events} tasks={this.state.tasks} news={this.state.news} messages={this.state.messages} friends={this.state.friends} users={this.state.users} jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} populateAppState={this.populateAppState} registerHere={this.registerHere} getAllUsers={this.getAllUsers} addUser={this.addUser}/>
       </React.Fragment>
     );

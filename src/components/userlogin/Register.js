@@ -39,7 +39,7 @@ export default class Register extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="sidenav">
+                <div className="sidenav register-sidenav">
                 <div className="login-main-text">
                     <h2>REGISTER</h2>
                     <p>Register a new account</p>
@@ -64,7 +64,7 @@ export default class Register extends Component {
                         <input type="text" required onChange={this.handleFieldChange} id="password"
                         placeholder="Enter password here"/>
                     </div>
-                    <button type="submit" className=" btn btn-black" onClick={this.getAllUsers}> Register </button>
+                    <button type="submit" className=" btn btn-register" onClick={this.getAllUsers}> Register </button>
                 </form>
             </div>
             </div>

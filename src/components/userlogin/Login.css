@@ -2,10 +2,16 @@ body {
     font-family: "Lato", sans-serif;
     }
 
-    .navbar {
+    /* .navbar {
     display: none;
+    } */
+    .btn-register {
+        background-color: #CBD2D9;
     }
 
+    .btn-login {
+        background-color:#CBD2D9;
+    }
     .main-head{
     height: 150px;
     background: #FFF;
@@ -14,9 +20,16 @@ body {
 
     .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: #3D4249;
     overflow-x: hidden;
     padding-top: 20px;
+    }
+
+    .register-sidenav{
+        height: 100%;
+        background-color: #6F8191;
+        overflow-x: hidden;
+        padding-top: 20px;
     }
 
 
