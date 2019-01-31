@@ -6,14 +6,16 @@ export default class MessagesCard extends Component {
 
   render() {
 
-    let userId = 1;
+    let userId = Number(sessionStorage.getItem("User"));
     console.log("this is friends from user database",this.props.friends)
 
-     let isThisAFriend = this.props.friends.find(friends => friends.id === this.props.message.userId)
+     let isThisAFriend = this.props.friends.find(friends => friends.id === this.props.message.userId) || null
     console.log(isThisAFriend)
 
+    let isSelf = (userId === this.props.message.userId) ? true : false;
+
     let itIsNotAFriend = false
-    if (isThisAFriend === undefined) {
+    if (isThisAFriend === null) {
       itIsNotAFriend = true
     }
 
@@ -42,25 +44,38 @@ export default class MessagesCard extends Component {
       </section>
       )
     }
-    if (itIsNotAFriend) {
-    return(
-      <section className={`${useris}-message`}>
-      <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5 className="message-not-a-friend">{personIs.userName}</h5></a>
-      <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
-      <MessageEditButton message={this.props.message}
-          history={this.props.history}
-          messageToEdit={this.props.messageToEdit} /></p>
-      </section>
-    )} else {
+    if (isSelf) {
       return(
-              <section className={`${useris}-message`}>
-      <a onClick={() => alert("already a friend")}><h5 className="message-is-a-friend">{personIs.userName}</h5></a>
+      <section className={`${useris}-message`}>
+      <h5 className="message-not-a-friend">{personIs.userName}</h5>
       <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}
           messageToEdit={this.props.messageToEdit} /></p>
       </section>
       )
-    }
+    } else  if (itIsNotAFriend) {
+      return(
+        <section className={`${useris}-message`}>
+        <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5 className="message-not-a-friend">{personIs.userName}</h5></a>
+        <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
+        {/* <MessageEditButton message={this.props.message}
+            history={this.props.history}
+            messageToEdit={this.props.messageToEdit}  /> */}
+            </p>
+        </section>
+      )
+      } else {
+      return(
+              <section className={`${useris}-message`}>
+      <a onClick={() => alert("already a friend")}><h5 className="message-is-a-friend">{personIs.userName}</h5></a>
+      <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
+      {/* <MessageEditButton message={this.props.message}
+          history={this.props.history}
+          messageToEdit={this.props.messageToEdit} /> */}
+          </p>
+      </section>
+      )
+      }
   }
 }

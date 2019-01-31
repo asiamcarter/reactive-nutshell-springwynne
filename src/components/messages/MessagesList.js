@@ -9,7 +9,7 @@ export default class MessagesList extends Component {
     messageIdForEditing: 0,
   }
   render() {
-    let userId = 1
+    let userId = Number(sessionStorage.getItem("User"));
 
      const messageToEdit = (messageId) => {
       console.log(messageId, userId)
@@ -18,7 +18,7 @@ export default class MessagesList extends Component {
     }
 
 
-    if (this.props.messages.length === 0 ||  this.props.users.length === 0 || this.props.friends.length === 0) {
+    if (this.props.messages.length === 0 ||  this.props.users.length === 0) {
       return null
     }
     return(
