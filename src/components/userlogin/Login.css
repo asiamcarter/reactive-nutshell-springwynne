@@ -5,6 +5,7 @@ body {
     /* .navbar {
     display: none;
     } */
+
     .btn-register {
         background-color: #CBD2D9;
     }
@@ -38,6 +39,11 @@ body {
     }
 
     /* TASKS */
+
+    .editTask {
+        margin-top: -150px;
+        margin-left: -100px;
+    }
     .taskContainer {
         margin-top: 10px;
     }

@@ -16,7 +16,7 @@ export default class EditTaskForm extends Component {
 
     updateExistingTask = evt => {
         evt.preventDefault()
-        let sessionId =sessionStorage.getItem("User")
+        let sessionId =Number(sessionStorage.getItem("User"))
         const existingTask = {
             userId: sessionId,
             task: this.state.task,
@@ -42,16 +42,27 @@ export default class EditTaskForm extends Component {
     render() {
         return (
             <React.Fragment>
-                    <div>
-                        <label htmlFor="Task"> Task </label>
-                        <input type="text" required onChange={this.handleFieldChange} id="task" placeholder="Task" value={this.state.task} />
-                    </div>
-                    <div>
-                        <label htmlFor="Completion Date">Completion Date</label>
-                        <input type="date" required onChange={this.handleFieldChange} id="expectedCompletionDate" value={this.state.expectedCompletionDate}/>
+                <form className="form-horizontal">
+                <fieldset>
+
+                        <h2 className="h2EditTask">Edit Task</h2>
+                        <div className="form-group">
+                        <label className="col-md-4 control-label" htmlFor="Task"> Task </label>
+                        <div className="col-md-4">
+                        <input type="text" required onChange={this.handleFieldChange}
+                        className="form-control input-md"
+                        id="task" placeholder="Task" value={this.state.task} />
+                        </div>
 
                     </div>
-                    <button type="submit" onClick={this.updateExistingTask}> Submit </button>
+                    <div className="form-group">
+                        <label className="col-md-4 control-label"htmlFor="Completion Date">Completion Date</label>
+                        <input type="date"required onChange={this.handleFieldChange} id="expectedCompletionDate" className="form-control input-md col-md-4 " value={this.state.expectedCompletionDate}/>
+
+                    </div>
+                    <button type="submit" className="btn-login" onClick={this.updateExistingTask}> Submit </button>
+                </fieldset>
+                </form>
 
             </React.Fragment>
 
