@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import DataManager from '../../modules/DataManager';
 
 export default class EditEvent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 
-			userId: 1, //pull from sessionStorage
+			userId: Number(sessionStorage.getItem("User")),
 			eventName: "",
 			eventDate: "",
 			eventLocation: "",
