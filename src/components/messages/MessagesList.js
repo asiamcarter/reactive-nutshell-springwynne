@@ -9,7 +9,7 @@ export default class MessagesList extends Component {
     messageIdForEditing: 0,
   }
   render() {
-    let userId = 1
+    let userId = Number(sessionStorage.getItem("User"));
 
      const messageToEdit = (messageId) => {
       console.log(messageId, userId)
@@ -34,7 +34,9 @@ export default class MessagesList extends Component {
         userDatabase={this.props.users}
         messageToEdit={messageToEdit}
         messageIdForEditing={this.state.messageIdForEditing}
-        putMessage={this.props.putMessage} />
+        putMessage={this.props.putMessage}
+        addFriend={this.props.addFriend}
+        friends={this.props.friends} />
       )
         }
         <MessagesAddMessage

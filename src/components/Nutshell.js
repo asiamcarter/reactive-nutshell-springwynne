@@ -71,7 +71,7 @@ export default class Nutshell extends Component {
     .then(messages => {this.setState({messages: messages})})
     .then(() => DataManager.getAll("friends"))
     .then(friends => {
-      let currentUser = 1;
+      let currentUser = Number(sessionStorage.getItem("User"));
       let friendsArray = [];
       friends.forEach(connection => {
         if(currentUser === connection.userId) {

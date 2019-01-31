@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export default class MessageEditButton extends Component {
 
   render() {
-    let userId = 1;
+    let userId = Number(sessionStorage.getItem("User"));
     if (userId !== this.props.message.userId) {
       return null
     }
