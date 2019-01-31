@@ -7,7 +7,15 @@ export default class MessagesCard extends Component {
   render() {
 
     let userId = 1;
-    console.log("messageIdForEditing",this.props.messageIdForEditing)
+    console.log("this is friends from user database",this.props.friends)
+
+     let isThisAFriend = this.props.friends.find(friends => friends.id === this.props.message.userId)
+    console.log(isThisAFriend)
+
+    let itIsNotAFriend = false
+    if (isThisAFriend === undefined) {
+      itIsNotAFriend = true
+    }
 
     let useris ="";
     let personIs = this.props.userDatabase.find(user => user.id === this.props.userId)
@@ -34,6 +42,7 @@ export default class MessagesCard extends Component {
       </section>
       )
     }
+    if (itIsNotAFriend) {
     return(
       <section className={`${useris}-message`}>
       <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5>{personIs.userName}</h5></a>
@@ -42,6 +51,16 @@ export default class MessagesCard extends Component {
           history={this.props.history}
           messageToEdit={this.props.messageToEdit} /></p>
       </section>
-    )
+    )} else {
+      return(
+              <section className={`${useris}-message`}>
+      <h5>{personIs.userName}</h5>
+      <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
+      <MessageEditButton message={this.props.message}
+          history={this.props.history}
+          messageToEdit={this.props.messageToEdit} /></p>
+      </section>
+      )
+    }
   }
 }

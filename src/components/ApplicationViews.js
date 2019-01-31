@@ -75,7 +75,8 @@ render() {
       users={this.props.users}
       addMessage={this.addMessage}
       putMessage={this.putMessage}
-      addFriend={this.addFriend} />
+      addFriend={this.addFriend}
+      friends={this.props.friends} />
     } else {
       return <Redirect to='/' />
     }}} />

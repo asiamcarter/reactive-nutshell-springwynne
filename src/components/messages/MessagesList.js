@@ -18,7 +18,7 @@ export default class MessagesList extends Component {
     }
 
 
-    if (this.props.messages.length === 0 ||  this.props.users.length === 0) {
+    if (this.props.messages.length === 0 ||  this.props.users.length === 0 || this.props.friends.length === 0) {
       return null
     }
     return(
@@ -35,7 +35,8 @@ export default class MessagesList extends Component {
         messageToEdit={messageToEdit}
         messageIdForEditing={this.state.messageIdForEditing}
         putMessage={this.props.putMessage}
-        addFriend={this.props.addFriend} />
+        addFriend={this.props.addFriend}
+        friends={this.props.friends} />
       )
         }
         <MessagesAddMessage
