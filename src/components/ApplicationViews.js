@@ -70,7 +70,12 @@ render() {
 
   <Route path="/messages" render={props => {
     if (this.isAuthenticated()) {
-    return <MessagesList {...props} messages={this.props.messages} users={this.props.users} addMessage={this.addMessage} putMessage={this.putMessage} />
+    return <MessagesList {...props}
+      messages={this.props.messages}
+      users={this.props.users}
+      addMessage={this.addMessage}
+      putMessage={this.putMessage}
+      addFriend={this.addFriend} />
     } else {
       return <Redirect to='/' />
     }}} />
