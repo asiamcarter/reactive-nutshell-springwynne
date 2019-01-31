@@ -51,6 +51,7 @@ export default class Nutshell extends Component {
 
   builduserIdQueryString () {
     let currentUserId = Number(sessionStorage.getItem("User"));
+    console.log(currentUserId)
     userIdQueryString = "";
     userIdQueryString += `userId=${currentUserId}`
     this.state.friends.forEach(friend => {
@@ -73,6 +74,7 @@ export default class Nutshell extends Component {
     .then(() => DataManager.getAll("friends"))
     .then(friends => {
       let currentUser = Number(sessionStorage.getItem("User"));
+      console.log(currentUser)
       let friendsArray = [];
       friends.forEach(connection => {
         if(currentUser === connection.userId) {

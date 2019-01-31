@@ -100,7 +100,7 @@ render() {
     return <Register {...props} addUser={this.props.addUser} users={this.props.users} registerHere={this.props.registerHere} getAll={this.props.getAllUsers}/>} }/>
 
   <Route exact path="/" render={props => {
-    return <Login {...props} registerHere={this.props.registerHere} />}}/>
+    return <Login {...props} populateAppState={this.props.populateAppState} registerHere={this.props.registerHere} />}}/>
 
   <Route exact path="/news" render={props => {
     if (this.isAuthenticated()) {
