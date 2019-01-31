@@ -4,7 +4,7 @@ export default class AddNewsForm extends Component {
 
 
   state = {
-    userId: 1,
+    userId: Number(sessionStorage.getItem("User")),
     url: "",
     title: "",
     synopsis: "",
