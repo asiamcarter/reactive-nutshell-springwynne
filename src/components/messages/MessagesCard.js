@@ -16,6 +16,12 @@ export default class MessagesCard extends Component {
     } else {
       useris = "nonUser"
     }
+
+    const addFriendObject = {
+      userId: userId,
+      otherFriendId: personIs.id,
+    }
+
     if (this.props.messageIdForEditing === this.props.message.id) {
       return(
       <section className={`${useris}-message`}>
@@ -30,7 +36,7 @@ export default class MessagesCard extends Component {
     }
     return(
       <section className={`${useris}-message`}>
-      <h5>{personIs.userName}</h5>
+      <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5>{personIs.userName}</h5></a>
       <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}
