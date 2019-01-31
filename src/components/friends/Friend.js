@@ -4,8 +4,7 @@ import DataManager from '../../modules/DataManager';
 export default class Friend extends Component {
   deleteFriend (id) {
 
-    let currentUser = 1;
-    let otherFriendId = id;
+    let currentUser = Number(sessionStorage.getItem("User"));
 
     DataManager.getAll("friends", `userId=${currentUser}&&otherFriendId=${id}`)
     .then(results => {

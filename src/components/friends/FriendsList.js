@@ -11,7 +11,7 @@ export default class Friends  extends Component {
 				{
 					this.props.friends.map(friend =>
 						<div key={friend.id} className="friend">
-							<Friend key={friend.id} friend={friend} deleteFriend={this.props.deleteFriend}/>
+							<Friend friend={friend} deleteFriend={this.props.deleteFriend}/>
 						</div>
 				)}
 			</section>

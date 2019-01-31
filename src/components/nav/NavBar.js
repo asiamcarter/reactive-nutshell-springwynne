@@ -24,7 +24,7 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Friends</Link>
                     </li>
-                    <Link to="/friends/searchresults"><FriendsSearch jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange}/></Link>
+                        <Link to="/friends/searchresults"><FriendsSearch jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange}/></Link>
                     <li className="nav-item">
                         <Link className="nav-link" to="/">Logout</Link>
                     </li>

@@ -29,7 +29,7 @@ export default class AddEvent extends Component {
 
 	addEvent = evt =>{
 		evt.preventDefault()
-		let userId = 1
+		let userId = Number(sessionStorage.getItem("User"))
 		let eventObject = {
 
 			userId: userId,
