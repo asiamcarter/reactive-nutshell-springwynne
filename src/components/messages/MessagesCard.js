@@ -45,7 +45,7 @@ export default class MessagesCard extends Component {
     if (itIsNotAFriend) {
     return(
       <section className={`${useris}-message`}>
-      <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5>{personIs.userName}</h5></a>
+      <a onClick={()=> this.props.addFriend(addFriendObject)} ><h5 className="message-not-a-friend">{personIs.userName}</h5></a>
       <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}
@@ -54,7 +54,7 @@ export default class MessagesCard extends Component {
     )} else {
       return(
               <section className={`${useris}-message`}>
-      <a onClick={() => alert("already a friend")}><h5>{personIs.userName}</h5></a>
+      <a onClick={() => alert("already a friend")}><h5 className="message-is-a-friend">{personIs.userName}</h5></a>
       <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}

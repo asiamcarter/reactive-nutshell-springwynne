@@ -46,8 +46,16 @@
   margin: 0px 10px;
 }
 
-.message-container .nonUser-message h5 {
+.message-container .nonUser-message .message-is-a-friend {
   color: #222;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px 40px;
+  text-align: right;
+}
+
+.message-container .nonUser-message .message-not-a-friend {
+  color: red;
   font-size: 12px;
   font-weight: bold;
   margin: 0px 40px;
@@ -57,3 +65,4 @@
 .message-container .user-message a {
     text-decoration: underline;
 }
+
