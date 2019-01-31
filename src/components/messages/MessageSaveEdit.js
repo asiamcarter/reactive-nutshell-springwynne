@@ -21,6 +21,7 @@ export default class MessageSaveEdit extends Component {
       userId: this.state.userId,
       id: this.state.id
     }
+    this.props.messageToEdit(0)
     this.props.putMessage(this.state.id, messageEdited)
   }
 

@@ -23,7 +23,8 @@ export default class MessagesCard extends Component {
       <MessageSaveEdit
      message={this.props.message}
      messageIdForEditing={this.props.messageIdForEditing}
-     putMessage={this.props.putMessage} />
+     putMessage={this.props.putMessage}
+     messageToEdit={this.props.messageToEdit} />
       </section>
       )
     }
