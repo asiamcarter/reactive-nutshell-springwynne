@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import TaskCard from "./TaskCard"
 
 export default class NewTaskForm extends Component {
 
@@ -7,7 +6,7 @@ export default class NewTaskForm extends Component {
         userId: "",
         task: "",
         expectedCompletionDate: "",
-        checked: ""
+        complete: ""
     }
 
     handleFieldChange = evt => {
@@ -17,16 +16,16 @@ export default class NewTaskForm extends Component {
     };
 
     buildNewTask = evt => {
+        let sessionId = sessionStorage.getItem("User")
         evt.preventDefault();
         const task = {
-            userId: "",
+            userId: Number(sessionId),
             task: this.state.task,
             expectedCompletionDate: this.state.expectedCompletionDate,
-            checked: false
+            complete: false
         }
         this.props.addTask(task)
-        .then(()=> this.props.history.push("/tasks"))
-
+            .then(()=> this.props.history.push("/tasks"))
     }
 
     render() {

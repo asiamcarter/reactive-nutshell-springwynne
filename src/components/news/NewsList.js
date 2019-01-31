@@ -5,11 +5,9 @@ import AddNewsButton from './AddNewsButton';
 
 export default class NewsList extends Component {
   render() {
-    const userId = 1
-    const userSaved = this.props.news.filter(newsArticles => newsArticles.userId === userId)
-    const timeSorted = userSaved.sort(function(a,b){
-      return new Date(b.timeStamp) - new Date(a.timeStamp);
 
+    const timeSorted = this.props.news.sort(function(a,b){
+      return new Date(b.timeStamp) - new Date(a.timeStamp);
 
   });
     return(
