@@ -20,13 +20,29 @@ export default class UserNewsCard extends Component {
 
     return(
       <>
+      <div className="container taskContainer">
+      <div className="row">
+      <div className="col-md-12 .col-sm-6">
+      <div className="offer newsoffer-default">
+      <div className="shape">
+      <div className="shape-text">
+      </div>
+      </div>
+
       <div className={classString}>
+      <div className="offer-content">
         <a href={this.props.newsArticle.url}>
-        <h4>{this.props.newsArticle.title}</h4>
+        <h3 className="lead">{this.props.newsArticle.title}</h3>
         </a>
         <p>{this.props.newsArticle.synopsis}</p>
          <RemoveButton />
+         </div>
         <hr></hr>
+
+        </div>
+        </div>
+      </div>
+      </div>
       </div>
       </>
     )

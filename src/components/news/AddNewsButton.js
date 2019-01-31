@@ -6,7 +6,7 @@ export default class AddNewsButton extends Component {
       <div className="addNewsButton">
         <button type="button"
                 onClick={()=> this.props.history.push("/addnews")}
-                className="btn btn-success">
+                className="news-btn btn-login">
             Add A News Article
         </button>
     </div>

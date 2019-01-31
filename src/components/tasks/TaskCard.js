@@ -29,7 +29,7 @@ export default class TaskCard extends Component {
         console.log(sessionId, this.props.task.userId)
         if (this.props.task.userId === Number(sessionId))
             {
-                return (
+return (
 
 <div className="container taskContainer">
 	<div className="row">

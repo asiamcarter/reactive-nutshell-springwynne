@@ -9,6 +9,23 @@ body {
     .btn-register {
         background-color: #CBD2D9;
     }
+    .newsHeader {
+        margin-left: 25px;
+        margin-top: 40px;
+        color: #3D4249;
+    }
+    .news-btn {
+        margin-left: 48px;
+        margin-top: 15px;
+        border-radius: 10px;
+    }
+
+    .news2-btn {
+        margin-left: 75vw;
+        border-radius: 10px;
+        background-color: rgb(194, 194, 194);
+
+    }
 
     .btn-login {
         background-color:#CBD2D9;
@@ -86,6 +103,10 @@ body {
     .offer-default {	border-color: #999999; }
     .offer-default .shape{
         border-color: transparent rgb(237, 152, 99) transparent transparent;
+    }
+
+    .newsoffer-default .shape {
+        border-color: transparent rgb(24, 32, 74) transparent transparent;
     }
 
     .offer-content{
