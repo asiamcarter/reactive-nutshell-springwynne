@@ -49,7 +49,7 @@ export default class Nutshell extends Component {
   }
 
   builduserIdQueryString () {
-    let currentUserId = 1;
+    let currentUserId = Number(sessionStorage.getItem("User"));
     userIdQueryString = "";
     userIdQueryString += `userId=${currentUserId}`
     this.state.friends.forEach(friend => {
