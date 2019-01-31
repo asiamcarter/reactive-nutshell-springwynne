@@ -54,7 +54,7 @@ export default class MessagesCard extends Component {
     )} else {
       return(
               <section className={`${useris}-message`}>
-      <h5>{personIs.userName}</h5>
+      <a onClick={() => alert("already a friend")}><h5>{personIs.userName}</h5></a>
       <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}
