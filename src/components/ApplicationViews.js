@@ -66,7 +66,9 @@ render() {
             messages={this.props.messages}
             users={this.props.users}
             addMessage={this.addMessage}
-            putMessage={this.putMessage} />
+            putMessage={this.putMessage}
+            addFriend={this.addFriend}
+             />
           }}
         />
 

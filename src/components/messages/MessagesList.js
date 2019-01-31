@@ -34,7 +34,8 @@ export default class MessagesList extends Component {
         userDatabase={this.props.users}
         messageToEdit={messageToEdit}
         messageIdForEditing={this.state.messageIdForEditing}
-        putMessage={this.props.putMessage} />
+        putMessage={this.props.putMessage}
+        addFriend={this.props.addFriend} />
       )
         }
         <MessagesAddMessage
