@@ -31,16 +31,28 @@ export default class NewTaskForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <form>
-                    <div>
-                        <label htmlFor="Task"> Task </label>
-                        <input type="text" required onChange={this.handleFieldChange} id="task" placeholder="Task" />
+                <form className="form-horizontal">
+                <fieldset>
+                    <h2> Add New Task</h2>
+                    <div className="form-group">
+                        <label className="col-md-4 control-label" htmlFor="Task"> Task </label>
+                    <div className="col-md-4">
+                        <input type="text"
+                        className="form-control input-md"
+                        required onChange={this.handleFieldChange} id="task" placeholder="Task" />
+                    </div>
                     </div>
                     <div>
-                        <label htmlFor="Completion Date">Completion Date</label>
-                        <input type="date" required onChange={this.handleFieldChange} id="expectedCompletionDate"/>
+                        <div className="form-group">
+                        <label className="col-md-4 control-label" htmlFor="Completion Date">Completion Date</label>
+                        <div className="col-md-4">
+                        <input type="date" required onChange={this.handleFieldChange} id="expectedCompletionDate"
+                        className="form-control col-md-9 "/>
+                        </div>
                     </div>
-                    <button type="submit" onClick={this.buildNewTask}> Submit </button>
+                    </div>
+                    <button type="submit" className="form-control col-md-1 btn-login" onClick={this.buildNewTask}> Submit </button>
+                    </fieldset>
                 </form>
             </React.Fragment>
 

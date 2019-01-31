@@ -56,8 +56,11 @@ export default class EditTaskForm extends Component {
 
                     </div>
                     <div className="form-group">
-                        <label className="col-md-4 control-label"htmlFor="Completion Date">Completion Date</label>
-                        <input type="date"required onChange={this.handleFieldChange} id="expectedCompletionDate" className="form-control input-md col-md-4 " value={this.state.expectedCompletionDate}/>
+                        <label className="col-md-4 control-label"htmlFor="Completion Date">
+                        Completion Date</label>
+                        <div className="col-md-4">
+                        <input type="date"required onChange={this.handleFieldChange} id="expectedCompletionDate" className="form-control col-md-9 " value={this.state.expectedCompletionDate}/>
+                        </div>
 
                     </div>
                     <button type="submit" className="btn-login" onClick={this.updateExistingTask}> Submit </button>
