@@ -113,7 +113,7 @@ export default class Nutshell extends Component {
     return (
       <React.Fragment>
         <NavBar jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange}/>
-        <ApplicationViews events={this.state.events} tasks={this.state.tasks} news={this.state.news} messagers={this.state.messagers} friends={this.state.friends} users={this.state.users} jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} populateAppState={this.populateAppState} registerHere={this.registerHere} getAllUsers={this.getAllUsers} addUser={this.addUser}/>
+        <ApplicationViews events={this.state.events} tasks={this.state.tasks} news={this.state.news} messages={this.state.messages} friends={this.state.friends} users={this.state.users} jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} populateAppState={this.populateAppState} registerHere={this.registerHere} getAllUsers={this.getAllUsers} addUser={this.addUser}/>
       </React.Fragment>
     );
   }
