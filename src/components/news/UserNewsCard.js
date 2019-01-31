@@ -5,8 +5,8 @@ export default class UserNewsCard extends Component {
 
   render() {
 
-    let currentUser = 1;
-
+    let currentUser = Number(sessionStorage.getItem("User"));
+    console.log(currentUser)
     let classString = (currentUser === this.props.newsArticle.userId) ? "userArticle" : "friendArticle"
 
     let RemoveButton = () => {

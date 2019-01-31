@@ -39,6 +39,14 @@ export default class Login extends Component {
 
     }
 
+    componentDidMount () {
+
+        if (sessionStorage.getItem("User") !== null) {
+
+            sessionStorage.removeItem("User")
+        }
+    }
+
 render() {
     return (
         <React.Fragment>
@@ -68,7 +76,7 @@ render() {
             </div>
             </div>
             </div>
-            </React.Fragment>
+        </React.Fragment>
         )
     }
 }

@@ -7,7 +7,7 @@ export default class EventList extends Component {
 	render() {
 
 		let EventDisplay = (event) => {
-			let currentUser = 1;
+			let currentUser = Number(sessionStorage.getItem("User"));
 
 			if (currentUser === event.event.userId) {
 

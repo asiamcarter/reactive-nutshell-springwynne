@@ -5,7 +5,7 @@ import Friends from "./friends/FriendsList";
 import FriendSearchResults from './friends/FriendSearchResults'
 import DataManager from "../modules/DataManager"
 import React, { Component } from "react"
-import { Route } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import TaskList from "../components/tasks/TaskList"
 import NewTaskForm from "../components/tasks/NewTaskForm"
 import MessagesList from "./messages/MessagesList"
@@ -15,6 +15,8 @@ import NewsList from "./news/NewsList"
 import AddNewsForm from "./news/AddNewsForm"
 
 export default class ApplicationViews extends Component {
+
+  isAuthenticated = () => sessionStorage.getItem("User") !== null
 
   addFriend = friend => DataManager.post("friends", friend).then(this.props.populateAppState())
 
@@ -46,8 +48,11 @@ render() {
   <React.Fragment>
 
   <Route exact path="/events" render={(props) => {
-    return <EventList {...props} events={this.props.events} deleteEvent={this.deleteEvent} friends={this.props.friends}/> }}/>
-
+     if (this.isAuthenticated()) {
+      return <EventList {...props} events={this.props.events} deleteEvent={this.deleteEvent} friends={this.props.friends}/>
+    } else {
+      return <Redirect to='/' />
+    }}} />
   <Route path="/events/new" render={(props) => {
     return <AddEvent {...props} addEvent={this.addEvent}/> }}/>
 
@@ -55,36 +60,46 @@ render() {
     return <EditEvent {...props} events={this.props.events} editEvent={this.editEvent}/> }}/>
 
   <Route exact path="/tasks" render={props => {
-    return <TaskList {...props} tasks={this.props.tasks} putTask={this.putTask}/> }}/>
-
+    if (this.isAuthenticated()) {
+      return <TaskList {...props} tasks={this.props.tasks} putTask={this.putTask}/>
+    } else {
+      return <Redirect to='/' />
+    }}} />
   <Route exact path="/tasks/new" render={props => {
     return <NewTaskForm {...props} tasks={this.props.tasks} addTask={this.addTask}/> }}/>
 
-    <Route
-          path="/messages" render={props => {
-            return <MessagesList {...props}
-            messages={this.props.messages}
-            users={this.props.users}
-            addMessage={this.addMessage}
-            putMessage={this.putMessage} />
-          }}
-        />
+  <Route path="/messages" render={props => {
+    if (this.isAuthenticated()) {
+    return <MessagesList {...props} messages={this.props.messages} users={this.props.users} addMessage={this.addMessage} putMessage={this.putMessage} />
+    } else {
+      return <Redirect to='/' />
+    }}} />
 
   <Route exact path="/friends" render={(props) => {
-    return <Friends {...props} friends={this.props.friends} deleteFriend={this.deleteFriend} findFriends={this.findFriends}/>}} />
+    if (this.isAuthenticated()) {
+    return <Friends {...props} friends={this.props.friends} deleteFriend={this.deleteFriend} findFriends={this.findFriends}/>
+    } else {
+      return <Redirect to='/' />
+    }}} />
+
   <Route path="/friends/searchresults" render={(props) => {
     return <FriendSearchResults {...props} jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange} addFriend={this.addFriend}/>}} />
-<Route path="/register" render={props => {
+
+  <Route path="/register" render={props => {
     return <Register {...props} addUser={this.props.addUser} users={this.props.users} registerHere={this.props.registerHere} getAll={this.props.getAllUsers}/>} }/>
 
-<Route exact path="/" render={props => {
+  <Route exact path="/" render={props => {
     return <Login {...props} registerHere={this.props.registerHere} />}}/>
 
-<Route exact path="/news" render={props => {
-return <NewsList {...props} news={this.props.news} friends={this.props.friends} deleteNewsArticle={this.deleteNewsArticle} /> }} />
+  <Route exact path="/news" render={props => {
+    if (this.isAuthenticated()) {
+    return <NewsList {...props} news={this.props.news} friends={this.props.friends} deleteNewsArticle={this.deleteNewsArticle} />
+    } else {
+      return <Redirect to='/' />
+    }}} />
 
-<Route path="/addnews" render={(props) => {
-      return <AddNewsForm {...props} addNewsArticle={this.addNewsArticle} /> }} />
+  <Route path="/addnews" render={(props) => {
+    return <AddNewsForm {...props} addNewsArticle={this.addNewsArticle} /> }} />
 
 </React.Fragment>
 
