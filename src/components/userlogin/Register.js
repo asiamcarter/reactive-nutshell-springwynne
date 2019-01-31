@@ -39,22 +39,36 @@ export default class Register extends Component {
     render() {
         return (
             <React.Fragment>
-                <p>REGISTER</p>
+                <div className="sidenav register-sidenav">
+                <div className="login-main-text">
+                    <h2>REGISTER</h2>
+                    <p>Register a new account</p>
+                </div>
+                </div>
+                <div className="main">
+                <div className="col-md-6 col-sm-12">
+                <div className="login-form">
                 <form>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="UserName"> UserName: </label>
                         <input type="text" required onChange={this.handleFieldChange} id="userName" placeholder="Enter username Here" />
                     </div>
-                    <div>
-                        <label htmlFor="Email">Email:</label>
-                        <input type="text" required onChange={this.handleFieldChange} id="email"/>
+                    <div className="form-group">
+                        <label htmlFor="Email">Email:
+                        </label>
+                        <input type="text" required onChange={this.handleFieldChange} id="email"
+                        placeholder = "Enter email here"/>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="Password">Password:</label>
-                        <input type="text" required onChange={this.handleFieldChange} id="password"/>
+                        <input type="text" required onChange={this.handleFieldChange} id="password"
+                        placeholder="Enter password here"/>
                     </div>
-                    <button type="submit" onClick={this.getAllUsers}> Register </button>
+                    <button type="submit" className=" btn btn-register" onClick={this.getAllUsers}> Register </button>
                 </form>
+            </div>
+            </div>
+            </div>
             </React.Fragment>
         )
 }
