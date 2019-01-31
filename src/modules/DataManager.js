@@ -6,7 +6,7 @@ export default {
         return fetch(`${remoteURL}/${dataset}/${id}?${embedItem}`).then(r => r.json())
     },
 
-    getAll(dataset, embedItem) {
+    getAll(dataset) {
         return fetch(`${remoteURL}/${dataset}`).then(r=>r.json())
     },
 

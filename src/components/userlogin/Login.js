@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import "./Login.css"
+
 
 
 export default class Login extends Component {
@@ -37,22 +39,35 @@ export default class Login extends Component {
 
     }
 
-    render() {
-        return (
-            <React.Fragment>
-                <p>LOGIN</p>
-                    <form>
-                        <div>
-                            <label htmlFor="UserName"> UserName: </label>
-                             <input type="text" required onChange={this.handleFieldChange} id="userName" />
-                        </div>
-                        <div>
-                            <label htmlFor="Password">Password:</label>
-                             <input type="text" required onChange={this.handleFieldChange} id="password"/>
-                        </div>
-                        <button type="submit" onClick={this.onLogin}> Submit </button>
-                        <p>Not a User? <Link to="/register">Register Here</Link></p>
-                    </form>
+render() {
+    return (
+        <React.Fragment>
+            <div className="sidenav">
+            <div className="login-main-text">
+                <h2>Welcome</h2>
+                <p>Login or register here</p>
+            </div>
+            </div>
+            <div className="main">
+            <div className="col-md-6 col-sm-12">
+            <div className="login-form">
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="UserName"> User Name: </label>
+                        <input type="text" className="form-control" required onChange={this.handleFieldChange} id="userName"
+                        placeholder="User Name" />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="Password">Password:</label>
+                        <input type="text" className="form-control" required onChange={this.handleFieldChange} id="password" placeholder="Password"/>
+                    </div>
+                    <button className="btn btn-black" type="submit" onClick={this.onLogin}> Submit </button>
+                    <p className="not-a-user">Not a User? <Link to="/register">Register Here</Link></p>
+                </form>
+            </div>
+            </div>
+            </div>
             </React.Fragment>
         )
     }

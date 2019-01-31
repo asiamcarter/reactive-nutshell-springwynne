@@ -3,6 +3,7 @@ import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 import DataManager from '../modules/DataManager'
 import "./Nutshell.css";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 let userIdQueryString = "";
 export default class Nutshell extends Component {
@@ -108,6 +109,8 @@ export default class Nutshell extends Component {
     DataManager.post("users", user)
     .then(() => this.populateAppState())
     .then(()=>this.registerHere(user.username, user.password))
+
+
 
   render() {
     return (
