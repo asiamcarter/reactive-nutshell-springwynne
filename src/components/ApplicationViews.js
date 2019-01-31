@@ -36,6 +36,11 @@ export default class ApplicationViews extends Component {
 
   editEvent = (id, dataset, eventObject) => DataManager.put(id, dataset, eventObject).then(this.props.populateAppState())
 
+  addMessage = (dataset, newObject) => DataManager.post(dataset, newObject).then(this.props.populateAppState())
+
+  putMessage = (id, message) => DataManager.put(id, "messages", message).then(this.props.populateAppState())
+
+
 render() {
   return (
   <React.Fragment>
@@ -55,8 +60,15 @@ render() {
   <Route exact path="/tasks/new" render={props => {
     return <NewTaskForm {...props} tasks={this.props.tasks} addTask={this.addTask}/> }}/>
 
-  <Route path="/messages" render={props => {
-    return <MessagesList /> }}/>
+    <Route
+          path="/messages" render={props => {
+            return <MessagesList {...props}
+            messages={this.props.messages}
+            users={this.props.users}
+            addMessage={this.addMessage}
+            putMessage={this.putMessage} />
+          }}
+        />
 
   <Route exact path="/friends" render={(props) => {
     return <Friends {...props} friends={this.props.friends} deleteFriend={this.deleteFriend} findFriends={this.findFriends}/>}} />
