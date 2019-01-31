@@ -66,7 +66,7 @@ export default class Nutshell extends Component {
       let filteredTasks = tasks.filter(task => {
         return task.complete === false
       })
-      {this.setState({tasks: filteredTasks})}})
+      this.setState({tasks: filteredTasks})})
     .then(() => DataManager.getAll("messages"))
     .then(messages => {this.setState({messages: messages})})
     .then(() => DataManager.getAll("friends"))

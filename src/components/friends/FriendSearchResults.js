@@ -5,7 +5,7 @@ export default class FriendsSearchResults extends Component {
 
   addFriend = id => {
 
-		let userId = 1
+		let userId = Number(sessionStorage.getItem("User"))
 
 		let friend = {
 
@@ -26,7 +26,7 @@ export default class FriendsSearchResults extends Component {
 			{
 				this.props.results.map(potentialFriend =>
 				<div key={potentialFriend.id} className="friendsSearchResults">
-					<a href='#' onClick={() => this.addFriend(potentialFriend.id)}>{`Name: `}{potentialFriend.userName}</a>
+					<button className="link-button" href='#' onClick={() => this.addFriend(potentialFriend.id)}>{`Name: `}{potentialFriend.userName}</button>
 				</div>
 			)}
 		</section>
