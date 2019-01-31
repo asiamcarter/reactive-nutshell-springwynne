@@ -31,10 +31,10 @@ export default class MessagesCard extends Component {
     return(
       <section className={`${useris}-message`}>
       <h5>{personIs.userName}</h5>
-      <p id={`message-${this.props.message.id}`}>{this.props.message.message}</p>
+      <p id={`message-${this.props.message.id}`}>{this.props.message.message} <br/>
       <MessageEditButton message={this.props.message}
           history={this.props.history}
-          messageToEdit={this.props.messageToEdit} />
+          messageToEdit={this.props.messageToEdit} /></p>
       </section>
     )
   }

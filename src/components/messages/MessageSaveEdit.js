@@ -16,7 +16,7 @@ export default class MessageSaveEdit extends Component {
 
   constructNewMessage = evt => {
     const messageEdited = {
-      message: this. state.message,
+      message: this.state.message,
       timeStamp: this.state.timeStamp,
       userId: this.state.userId,
       id: this.state.id

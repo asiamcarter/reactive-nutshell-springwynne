@@ -9,8 +9,8 @@ export default class MessageEditButton extends Component {
       return null
     }
     return(
-      <button onClick={()=> this.props.messageToEdit(this.props.message.id)}
-        className={`edit-message-${this.props.message.id}`}>edit</button>
+      <a onClick={()=> this.props.messageToEdit(this.props.message.id)}
+        className={`edit-message-${this.props.message.id}`}>edit</a>
     )
   }
 }
