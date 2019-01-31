@@ -62,7 +62,11 @@ export default class Nutshell extends Component {
     DataManager.getAll("users")
     .then(users => {this.setState({users: users})})
     .then(() => DataManager.getAll("tasks"))
-    .then(tasks => {this.setState({tasks: tasks})})
+    .then(tasks => {
+      let filteredTasks = tasks.filter(task => {
+        return task.complete === false
+      })
+      {this.setState({tasks: filteredTasks})}})
     .then(() => DataManager.getAll("messages"))
     .then(messages => {this.setState({messages: messages})})
     .then(() => DataManager.getAll("friends"))
@@ -88,12 +92,28 @@ export default class Nutshell extends Component {
 
     this.populateAppState();
   }
+    registerHere = (username, password) => {
+    return DataManager.registerHere(username, password)
+    // .then(() => DataManager.getAll("users"))
+    // .then(allUsers => this.setState({
+    //   users: allUsers}))
+    }
+
+    getAllUsers = () => {
+      return DataManager.getAll("users", "")
+    //  .then(()=> this.populateAppState())
+    }
+
+    addUser = user =>
+    DataManager.post("users", user)
+    .then(() => this.populateAppState())
+    .then(()=>this.registerHere(user.username, user.password))
 
   render() {
     return (
       <React.Fragment>
         <NavBar jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange}/>
-        <ApplicationViews events={this.state.events} tasks={this.state.tasks} news={this.state.news} messagers={this.state.messagers} friends={this.state.friends} users={this.state.users} jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} populateAppState={this.populateAppState}/>
+        <ApplicationViews events={this.state.events} tasks={this.state.tasks} news={this.state.news} messagers={this.state.messagers} friends={this.state.friends} users={this.state.users} jsonQuery={this.state.jsonQuery} results={this.state.results} handleInputChange={this.handleInputChange} populateAppState={this.populateAppState} registerHere={this.registerHere} getAllUsers={this.getAllUsers} addUser={this.addUser}/>
       </React.Fragment>
     );
   }

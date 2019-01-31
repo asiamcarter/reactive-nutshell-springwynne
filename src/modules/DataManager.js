@@ -7,7 +7,7 @@ export default {
     },
 
     getAll(dataset, embedItem) {
-        return fetch(`${remoteURL}/${dataset}?${embedItem}`).then(r=>r.json())
+        return fetch(`${remoteURL}/${dataset}`).then(r=>r.json())
     },
 
     post(dataset, newObject) {
@@ -34,5 +34,15 @@ export default {
         return fetch (`${remoteURL}/${dataset}/${id}`, {
             method: "DELETE"
         }).then(r => r.json())
+    },
+
+    registerHere(username, password){
+        return fetch(`http://localhost:5002/users?userName=${username}&password=${password}`)
+        .then(response => response.json())
+    },
+
+    getAllTasks() {
+        return fetch("http://localhost:5002/tasks?complete=false")
+        .then(response=>response.json())
     }
 }

@@ -1,12 +1,8 @@
 import React, { Component } from "react"
 import TaskCard from "./TaskCard"
-import { Link } from "react-router-dom"
-
-
 export default class TaskList extends Component {
 
     render() {
-        // console.log(this.props)
         return (
             <React.Fragment>
                 <h1>Tasks</h1>
@@ -23,7 +19,6 @@ export default class TaskList extends Component {
 
                     {this.props.tasks.map(task=> (
                         <div key ={task.id}>
-                        {/* <Link to={`/tasks/${task.id}/edit`}>Edit</Link> */}
                         <TaskCard task={task} {...this.props} />
                         </div>
                     ))}
