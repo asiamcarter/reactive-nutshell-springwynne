@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MessageEditButton from './MessageEditButton'
+import MessageSaveEdit from './MessageSaveEdit'
 
 export default class MessagesCard extends Component {
 
@@ -19,7 +20,10 @@ export default class MessagesCard extends Component {
       return(
       <section className={`${useris}-message`}>
       <h5>{personIs.userName}</h5>
-      <input/>
+      <MessageSaveEdit
+     message={this.props.message}
+     messageIdForEditing={this.props.messageIdForEditing}
+     putMessage={this.props.putMessage} />
       </section>
       )
     }

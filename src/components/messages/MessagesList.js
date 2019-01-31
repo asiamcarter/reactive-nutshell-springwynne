@@ -9,8 +9,6 @@ export default class MessagesList extends Component {
   }
   render() {
     let userId = 1
-    let edit = true;
-
 
      const messageToEdit = (messageId) => {
       console.log(messageId, userId)
@@ -34,7 +32,8 @@ export default class MessagesList extends Component {
         history={this.props.history}
         userDatabase={this.props.users}
         messageToEdit={messageToEdit}
-        messageIdForEditing={this.state.messageIdForEditing} />
+        messageIdForEditing={this.state.messageIdForEditing}
+        putMessage={this.props.putMessage} />
       )
         }
         <MessagesAddMessage

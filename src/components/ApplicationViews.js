@@ -4,7 +4,7 @@ import DataManager from "../modules/DataManager"
 import NewsList from './news/NewsList'
 import AddNewsForm from './news/AddNewsForm'
 import MessagesList from './messages/MessagesList'
-import MessageEditMessageForm from './messages/MessageEditMessageForm'
+import MessageEditMessageForm from './messages/MessageSaveEdit'
 import TaskList from "./tasks/TaskList"
 import NewTaskForm from "./tasks/NewTaskForm"
 import EditForm from "./tasks/EditForm"
@@ -90,6 +90,13 @@ export default class ApplicationViews extends Component {
     })
     )
 
+  putMessage = (id, message) =>
+    DataManager.put(id, "messages", message)
+    .then(()=> DataManager.getAll("messages"))
+    .then(allmessages => this.setState({
+      messages: allmessages
+    }))
+
   deleteNewsArticle = (id, dataset) =>  DataManager.delete(id, dataset)
     .then(() => DataManager.getAll(dataset))
     .then(news => this.setState({
@@ -140,7 +147,8 @@ export default class ApplicationViews extends Component {
             return <MessagesList {...props}
             messages={this.state.messages}
             users={this.state.users}
-            addMessage={this.addMessage} />
+            addMessage={this.addMessage}
+            putMessage={this.putMessage} />
           }}
         />
         <Route
