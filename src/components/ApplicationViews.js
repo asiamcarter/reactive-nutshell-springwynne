@@ -13,6 +13,7 @@ import Register from "./userlogin/Register"
 import Login from "./userlogin/Login"
 import NewsList from "./news/NewsList"
 import AddNewsForm from "./news/AddNewsForm"
+import EditForm from "./tasks/EditForm"
 
 export default class ApplicationViews extends Component {
 
@@ -55,6 +56,10 @@ render() {
     }}} />
   <Route path="/events/new" render={(props) => {
     return <AddEvent {...props} addEvent={this.addEvent}/> }}/>
+
+  <Route exact path="/tasks/:id/edit" render={(props)=> {
+    return <EditForm {...props} putTask={this.putTask} tasks={this.props.tasks} get={this.props.populateAppState}/>
+  }} />
 
   <Route path="/events/editevent/:id" render={(props) => {
     return <EditEvent {...props} events={this.props.events} editEvent={this.editEvent}/> }}/>

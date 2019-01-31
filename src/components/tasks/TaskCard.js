@@ -26,14 +26,29 @@ export default class TaskCard extends Component {
 
     showChecked = () => {
         let sessionId = sessionStorage.getItem("User")
-        if (this.state.complete === true && this.props.task.userId === Number(sessionId))
+        console.log(sessionId, this.props.task.userId)
+        if (this.props.task.userId === Number(sessionId))
             {
                 return (
-                    <div>
-                        <h4>{this.props.task.task}</h4>
+
+<div className="container taskContainer">
+	<div className="row">
+		<div className=" col-md-12 .col-sm-6">
+			<div className="offer offer-default">
+				<div className="shape">
+					<div className="shape-text">
+					</div>
+				</div>
+				<div className="offer-content">
+					<h3 className="lead">
+                        {this.props.task.task}</h3>
                         <p>Completion Date: {this.props.task.expectedCompletionDate}</p>
                         <p>Complete <input type="checkbox" onChange={this.handleChange} id={this.props.task.id}/></p>
                         <Link to={`/tasks/${this.props.task.id}/edit`}>Edit</Link>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         </div>
                         )
             }
