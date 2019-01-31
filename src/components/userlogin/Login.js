@@ -29,7 +29,7 @@ export default class Login extends Component {
                         }
                     if (loggedIn === true){
                         sessionStorage.setItem("User", user.id);
-                        this.props.history.push("/");
+                        this.props.history.push("/news");
                     }
                 })
             }

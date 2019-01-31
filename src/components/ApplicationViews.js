@@ -11,7 +11,8 @@ import NewTaskForm from "../components/tasks/NewTaskForm"
 import MessagesList from "./messages/MessagesList"
 import Register from "./userlogin/Register"
 import Login from "./userlogin/Login"
-
+import NewsList from "./news/NewsList"
+import AddNewsForm from "./news/AddNewsForm"
 
 export default class ApplicationViews extends Component {
 
@@ -63,8 +64,15 @@ render() {
     return <FriendSearchResults {...props} jsonQuery={this.props.jsonQuery} results={this.props.results} handleInputChange={this.props.handleInputChange} addFriend={this.addFriend}/>}} />
 <Route path="/register" render={props => {
     return <Register {...props} addUser={this.props.addUser} users={this.props.users} registerHere={this.props.registerHere} getAll={this.props.getAllUsers}/>} }/>
-  <Route path="/login" render={props => {
+
+<Route exact path="/" render={props => {
     return <Login {...props} registerHere={this.props.registerHere} />}}/>
+
+<Route exact path="/news" render={props => {
+return <NewsList {...props} news={this.props.news} friends={this.props.friends} deleteNewsArticle={this.deleteNewsArticle} /> }} />
+
+<Route path="/addnews" render={(props) => {
+      return <AddNewsForm {...props} addNewsArticle={this.addNewsArticle} /> }} />
 
 </React.Fragment>
 
