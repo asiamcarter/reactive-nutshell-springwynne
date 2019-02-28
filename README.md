@@ -2,7 +2,7 @@
 
 Nutshell is a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
-![alt text](ReactiveNutshell.png)
+![alt text](ReactNutshell.png)
 
 ## Motivation
 
