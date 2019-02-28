@@ -1,0 +1,258 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "userName": "Hernando",
+        "email": "dlskfj@wh.com",
+        "password": "yomama"
+      },
+      {
+        "userName": "Lorenzo",
+        "email": "lorenzo@gmail.com",
+        "password": "yomama",
+        "id": 2
+      },
+      {
+        "userName": "Loren",
+        "email": "sally@gmail.com",
+        "password": "yomama",
+        "id": 3
+      },
+      {
+        "userName": "Fred",
+        "email": "fred@gmail.com",
+        "password": "yomama",
+        "id": 4
+      },
+      {
+        "userName": "Russ",
+        "email": "russell.reiter@gmail.com",
+        "password": "11111",
+        "id": 5
+      },
+      {
+        "userName": "AsiaC",
+        "email": "asiamcarter@gmail.com",
+        "password": "test",
+        "id": 6
+      }
+    ],
+    "newsitems": [
+      {
+        "userId": 1,
+        "url": "https://robbreport.com/food-drink/dining/nomad-las-vegas-opens-park-mgm-2828686/",
+        "title": "USER 1 - NoMad Las Vegas Is Embracing the Theatricality of Sin City",
+        "synopsis": "NoMad Las Vegas Is Embracing the Theatricality of Sin City",
+        "timeStamp": "2019-01-12T19:54:04.164Z",
+        "id": 1
+      },
+      {
+        "userId": 1,
+        "url": "https://robbreport.com/food-drink/dining/nomad-las-vegas-opens-park-mgm-2828686/",
+        "title": "USER 1 - NoMad Las Vegas Is Embracing the Theatricality of Sin City",
+        "synopsis": "NoMad Las Vegas Is Embracing the Theatricality of Sin City",
+        "timeStamp": "2019-01-12T19:54:04.164Z",
+        "id": 2
+      },
+      {
+        "userId": 2,
+        "url": "https://www.cntraveler.com/story/the-new-nomad-las-vegas-breaks-the-strip-stereotype",
+        "title": "USER 2 - The New NoMad Las Vegas Breaks the Strip Stereotype",
+        "synopsis": "The New NoMad Las Vegas Breaks the Strip Stereotype",
+        "timeStamp": "2019-01-26T19:54:04.164Z",
+        "id": 3
+      },
+      {
+        "userId": 2,
+        "url": "https://www.hollywoodreporter.com/news/nomad-restaurant-open-las-vegas-1157021",
+        "title": "USER 2 - NoMad Restaurant to Bow in Las Vegas",
+        "synopsis": "NoMad Restaurant to Bow in Las Vegas",
+        "timeStamp": "2019-01-28T19:54:04.164Z",
+        "id": 4
+      },
+      {
+        "userId": 4,
+        "url": "https://www.wallpaper.com/travel/usa/las-vegas/hotels/nomad",
+        "title": "USER 4 - NoMad hotel - Las Vegas, USA",
+        "synopsis": "Review of NoMad hotel - Las Vegas, USA",
+        "timeStamp": "2019-01-29T19:54:04.164Z",
+        "id": 6
+      },
+      {
+        "userId": 4,
+        "url": "https://vegas.eater.com/2018/11/14/18093982/lunch-dinner-menus-nomad-bar",
+        "title": "USER 4 - Glance Through the Perfect Lunch and Dinner Menus at NoMad Bar",
+        "synopsis": "The dishes are playful yet expertly executed",
+        "timeStamp": "2019-01-30T19:54:04.164Z",
+        "id": 7
+      },
+      {
+        "userId": 3,
+        "url": "https://www.msn.com",
+        "title": "NSS Reply temp",
+        "synopsis": "msn",
+        "timeStamp": "2019-01-31T19:54:04.164Z",
+        "id": 8
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "userId": 1,
+        "eventName": "USER 1 - Pre-launch Party",
+        "eventDate": "2019-01-30",
+        "eventLocation": "NSS",
+        "eventTime": "17:00"
+      },
+      {
+        "userId": 1,
+        "eventName": "USER 1 - Post-Launch Party",
+        "eventDate": "2019-01-31",
+        "eventTime": "20:00",
+        "eventLocation": "NoMad Bar, Las Vegas!!!!!",
+        "id": 2
+      },
+      {
+        "id": 3,
+        "userId": 2,
+        "eventName": "USER 2 - Launch Party",
+        "eventDate": "2019-01-30",
+        "eventLocation": "Neighbors Bar",
+        "eventTime": "18:00"
+      },
+      {
+        "userId": 2,
+        "eventName": "USER 2 - Pre-Pre-launch Party",
+        "eventDate": "2019-01-31",
+        "eventTime": "15:00",
+        "eventLocation": "Red Bicycle",
+        "id": 4
+      },
+      {
+        "id": 5,
+        "userId": 3,
+        "eventName": "USER 3 - The Party before the Launch Party",
+        "eventDate": "2019-01-30",
+        "eventTime": "20:00",
+        "eventLocation": "Neighbors Bar"
+      },
+      {
+        "userId": 3,
+        "eventName": "USER 3 - Pre-Post-Launch Party",
+        "eventDate": "2019-01-31",
+        "eventTime": "08:00",
+        "eventLocation": "On the plane to Vegas!!!!!!",
+        "id": 6
+      },
+      {
+        "userId": 4,
+        "eventName": "USER 4 - Another Damned Post-Launch Party",
+        "eventDate": "2019-01-30",
+        "eventTime": "22:00",
+        "eventLocation": "NoMad Bar, Las Vegas!!!!!",
+        "id": 7
+      },
+      {
+        "userId": 4,
+        "eventName": "USER 4 - Post-Launch Party After Party",
+        "eventDate": "2019-01-31",
+        "eventTime": "24:00",
+        "eventLocation": "NoMad Bar, Las Vegas!!!!!",
+        "id": 8
+      }
+    ],
+    "tasks": [
+      {
+        "userId": 1,
+        "task": "Launch Nomads to the WORLD!",
+        "expectedCompletionDate": "01 16 2019",
+        "complete": false,
+        "id": 2
+      },
+      {
+        "id": 3,
+        "userId": 1,
+        "task": "Make a HUGE bank deposit",
+        "expectedCompletionDate": "01 17 2019",
+        "complete": false
+      },
+      {
+        "userId": 2,
+        "task": "Build Nomads 'Friends' Section",
+        "expectedCompletionDate": "01 15 2019",
+        "complete": true,
+        "id": 4
+      },
+      {
+        "id": 5,
+        "userId": 2,
+        "task": "Launch Nomads to the WORLD!",
+        "expectedCompletionDate": "01 16 2019",
+        "complete": false
+      },
+      {
+        "userId": 2,
+        "task": "Make a HUGE bank deposit",
+        "expectedCompletionDate": "01 17 2019",
+        "complete": false,
+        "id": 6
+      },
+      {
+        "userId": 3,
+        "task": "jhkj",
+        "expectedCompletionDate": "2019-01-30",
+        "complete": false,
+        "id": 7
+      }
+    ],
+    "friends": [
+      {
+        "userId": 1,
+        "otherFriendId": 2,
+        "id": 1
+      },
+      {
+        "userId": 5,
+        "otherFriendId": 1,
+        "id": 2
+      }
+    ],
+    "messages": [
+      {
+        "message": "This Nomads thing is going to be HUGE!!",
+        "timeStamp": "3:00:00pm",
+        "userId": 1,
+        "id": 1
+      },
+      {
+        "id": 2,
+        "userId": 2,
+        "message": "Hell yeah it is, we'll be drinking champagne in Vegas by Monday!!",
+        "timeStamp": "3:01:00pm"
+      },
+      {
+        "userId": 1,
+        "message": "For sure, and tipping strippers in $100 bills!",
+        "timeStamp": "3:02:00pm",
+        "id": 3
+      },
+      {
+        "id": 4,
+        "userId": 2,
+        "message": "Damn Right!!",
+        "timeStamp": "3:03:00pm"
+      },
+      {
+        "userId": 4,
+        "message": "hello",
+        "timeStamp": "2019-01-31T19:39:36.046Z",
+        "id": 5
+      },
+      {
+        "message": "shocker man",
+        "timeStamp": "2019-01-31T19:47:22.789Z",
+        "userId": 3,
+        "id": 6
+      }
+    ]
+  }
