@@ -1,63 +1,27 @@
-# Nutshell: The Information Dashboard
+# Reactive Nutshell
 
-Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
+Nutshell is a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
-You will be using the React library to build out this application.
+![alt text](ReactiveNutshell.png)
 
-To start you off, here's an example of what the resources in your API should look like once it's populated with some data from your application.
+## Motivation
 
-### Users
+We set out to practice working in a team setting, building a product that utilizes all of the skills and concepts that we have learned up to this point, emphasizing building an application in React.
 
-```json
-{ "id": 1, "username": "Steve", "email": "me@me.com" }
-```
+## Installation
 
-### Messages
+Clone repository
+Cd src
+Npm install
+From root directory cd public
+Run json server on port 5002
+Open localhost: 3000 in the browser of your choice
+Register for an account and explore the application at your leisure
 
-```json
-{ "id": 1, "userId": 1, "message": "What's up?" }
-```
+## Tech Used
 
-### News
+ReactJS
+BootStrap
 
-```json
-{
-    "id": 1,
-    "userId": 2,
-    "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-    "title": "Wormholes Allow Information to Escape Black Holes",
-    "synopsis": "Check out this recent discovery about workholes"
-}
-```
-
-### Friends
-
-```json
-{ "connectionId": 1, "userId": 1, "otherFriendId": 3 }
-```
-
-### Tasks
-
-```json
-{ "id": 1, "userId": 3, "task": "Take out garbage" }
-```
-
-## Professional Requirements
-
-1. All teammates must be using Grunt to run ESLint and Browserify during development
-1. Each module should have a comment at the top with the following info: author(s) and purpose of module
-1. The README for your project should include instructions on how another person can download and run the application
-
-## How to Handle Authentication
-
-You will be using session storage to keep track of which user has logged into Nutshell. When the user fills out the registration form, you will POST their username and password to the `users` collection in your API. You will then immediately take the `id` of the object in the response and save it to session storage.
-
-```js
-sessionStorage.setItem("activeUser", user.id)
-```
-
-If you want to add a Logout feature, all you need to do it remove the session storage item.
-
-```js
-sessionStorage.removeItem("activeUser")
-```
+## Contributors
+Asia Carter, Russell Reiter, Joseph Baugh
